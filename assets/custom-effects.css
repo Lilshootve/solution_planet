@@ -83,6 +83,18 @@
   transform: translateY(-2px) scale(1.05);
 }
 
+/* Estilos para la imagen PNG del logo de WhatsApp */
+#whatsapp-button img {
+  filter: brightness(0) invert(1); /* Hace la imagen blanca */
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+#whatsapp-button a:hover img {
+  filter: brightness(0) invert(1) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+  transform: scale(1.1);
+}
+
 /* Indicador de estado online */
 #whatsapp-button .bg-green-500 {
   animation: pulse-green 2s infinite;
