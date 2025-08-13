@@ -13,6 +13,10 @@
 
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Custom Effects CSS -->
+  <link rel="stylesheet" href="assets/custom-effects.css">
+  
   <script>
     tailwind.config = {
       theme: {
@@ -200,26 +204,68 @@
   </footer>
 
   <!-- Floating WhatsApp Button -->
-  <a href="#" onclick="openWhatsApp();return false;" class="fixed bottom-5 right-5 z-50 inline-flex items-center justify-center w-14 h-14 rounded-full bg-brand text-white shadow-soft hover:bg-brand-dark" aria-label="WhatsApp">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-7 h-7"><path d="M.05 11.64C.36 5.3 5.6.45 11.94.77c6.02.31 10.69 5.15 10.69 11.15 0 6.2-5.03 11.2-11.23 11.08-1.93-.03-3.74-.53-5.32-1.41L2.4 22.98l1.44-3.47A10.2 10.2 0 0 1 .05 11.64zm6.2 8.1c1.46.83 3.14 1.26 4.9 1.29 5.18.09 9.48-4.08 9.48-9.26 0-4.97-3.9-9.1-8.86-9.36-5.45-.29-10.04 4.02-10.3 9.47-.1 2.06.45 4.01 1.53 5.67l-.9 2.16 2.15-.9zm8.23-4.2c-.22.12-.51.19-.86.11-1.65-.4-3.6-1.6-5-3.22-1.4-1.61-2.37-3.61-2.61-5.29-.07-.36.04-.65.17-.87l1.08-1.68c.2-.31.54-.52.9-.48.3.04.65.22.84.68l.86 2.01c.13.31.07.7-.15.98l-.53.7c-.2.26-.2.59-.05.89.34.72.98 1.63 1.76 2.42.78.8 1.7 1.45 2.43 1.8.3.15.63.16.9-.04l.7-.52c.29-.22.69-.28 1-.15l1.99.84c.46.19.65.54.7.84.05.36-.17.7-.48.9l-1.68 1.07z"/></svg>
-  </a>
+  <div id="whatsapp-button" class="fixed bottom-6 right-6 z-50 group">
+    <!-- Botón principal -->
+    <a href="#" onclick="openWhatsApp();return false;" 
+       class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-500 text-white shadow-2xl hover:bg-green-600 hover:scale-110 transition-all duration-300 ease-out transform hover:rotate-3" 
+       aria-label="Chat on WhatsApp">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8">
+        <path d="M.05 11.64C.36 5.3 5.6.45 11.94.77c6.02.31 10.69 5.15 10.69 11.15 0 6.2-5.03 11.2-11.23 11.08-1.93-.03-3.74-.53-5.32-1.41L2.4 22.98l1.44-3.47A10.2 10.2 0 0 1 .05 11.64zm6.2 8.1c1.46.83 3.14 1.26 4.9 1.29 5.18.09 9.48-4.08 9.48-9.26 0-4.97-3.9-9.1-8.86-9.36-5.45-.29-10.04 4.02-10.3 9.47-.1 2.06.45 4.01 1.53 5.67l-.9 2.16 2.15-.9zm8.23-4.2c-.22.12-.51.19-.86.11-1.65-.4-3.6-1.6-5-3.22-1.4-1.61-2.37-3.61-2.61-5.29-.07-.36.04-.65.17-.87l1.08-1.68c.2-.31.54-.52.9-.48.3.04.65.22.84.68l.86 2.01c.13.31.07.7-.15.98l-.53.7c-.2.26-.2.59-.05.89.34.72.98 1.63 1.76 2.42.78.8 1.7 1.45 2.43 1.8.3.15.63.16.9-.04l.7-.52c.29-.22.69-.28 1-.15l1.99.84c.46.19.65.54.7.84.05.36-.17.7-.48.9l-1.68 1.07z"/>
+      </svg>
+    </a>
+    
+    <!-- Tooltip -->
+    <div class="absolute bottom-full right-0 mb-3 px-3 py-2 bg-gray-900 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap">
+      Chat on WhatsApp
+      <div class="absolute top-full right-4 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900"></div>
+    </div>
+    
+    <!-- Pulso de notificación -->
+    <div class="absolute inset-0 rounded-full bg-green-400 animate-ping opacity-75"></div>
+    
+    <!-- Indicador de estado online -->
+    <div class="absolute top-1 right-1 w-3 h-3 bg-green-400 rounded-full border-2 border-white"></div>
+  </div>
 
   <!-- Data + JS -->
   <script>
-    // WhatsApp integration
+    // WhatsApp integration mejorada
     const WA_NUMBER = '19513185602';
+    
     const openWhatsApp = () => {
       const msg = "Hello! I'd like a quote for an event.";
       window.open('https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(msg), '_blank');
+      
+      // Feedback visual
+      const button = document.getElementById('whatsapp-button');
+      button.style.transform = 'scale(0.95)';
+      setTimeout(() => {
+        button.style.transform = 'scale(1)';
+      }, 150);
     };
+    
     const openWhatsAppService = (name, price, type) => {
       const msg = `Hello! I'm interested in: ${name} (From $${price.toLocaleString()} – ${type}). Could you send a quote?`;
       window.open('https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(msg), '_blank');
     };
+    
     const openWhatsAppProduct = (name) => {
       const msg = `Hello! I'm interested in the product: ${name}. Could you send a quote?`;
       window.open('https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(msg), '_blank');
     };
+
+    // Animación de entrada del botón
+    document.addEventListener('DOMContentLoaded', () => {
+      const button = document.getElementById('whatsapp-button');
+      button.style.opacity = '0';
+      button.style.transform = 'translateY(20px) scale(0.8)';
+      
+      setTimeout(() => {
+        button.style.transition = 'all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+        button.style.opacity = '1';
+        button.style.transform = 'translateY(0) scale(1)';
+      }, 1000);
+    });
 
     const services = [
       { name: 'LED wall rental 3×2 m (P2.6)', price: 3200, type: 'Rental' },

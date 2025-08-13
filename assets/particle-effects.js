@@ -18,28 +18,43 @@ class ParticleEffects {
   init() {
     if (this.isInitialized) return;
     
-    // Inicializar efectos del header
-    this.initHeaderEffects();
+    console.log('🚀 Inicializando ParticleEffects...');
     
-    // Agregar Bokeh CSS al body
-    this.addBokehBackground();
-    
-    // Inicializar efectos de ondas sutil
-    this.initWaveEffects();
-    
-    this.isInitialized = true;
+    // Esperar un poco más para asegurar que el DOM esté completamente listo
+    setTimeout(() => {
+      // Inicializar efectos del header
+      this.initHeaderEffects();
+      
+      // Agregar Bokeh CSS al body
+      this.addBokehBackground();
+      
+      // Inicializar efectos de ondas sutil
+      this.initWaveEffects();
+      
+      this.isInitialized = true;
+      console.log('✅ ParticleEffects inicializado correctamente');
+    }, 100);
   }
 
   initHeaderEffects() {
     const header = document.querySelector('header');
-    if (!header) return;
+    if (!header) {
+      console.warn('⚠️ No se encontró el header');
+      return;
+    }
+
+    console.log('🎨 Inicializando efectos del header...');
 
     // Crear canvas para efectos del header
     this.headerCanvas = document.createElement('canvas');
-    this.headerCanvas.style.cssText = 'position:absolute;inset:0;pointer-events:none;z-index:1;opacity:0;transition:opacity 0.3s ease';
+    this.headerCanvas.style.cssText = 'position:absolute;inset:0;pointer-events:none;z-index:10;opacity:0;transition:opacity 0.3s ease;width:100%;height:100%';
     this.headerCanvas.id = 'header-particles';
     
-    header.style.position = 'relative';
+    // Asegurar que el header tenga position relative
+    if (getComputedStyle(header).position === 'static') {
+      header.style.position = 'relative';
+    }
+    
     header.appendChild(this.headerCanvas);
     
     this.headerCtx = this.headerCanvas.getContext('2d');
@@ -50,6 +65,8 @@ class ParticleEffects {
     
     // Inicializar loop de ripples
     this.startHeaderRipples();
+    
+    console.log('✅ Efectos del header inicializados');
   }
 
   resizeHeaderCanvas() {
@@ -61,28 +78,39 @@ class ParticleEffects {
     this.headerState.w = Math.max(1, Math.floor(rect.width));
     this.headerState.h = Math.max(1, Math.floor(rect.height));
     
+    // Configurar canvas con alta resolución
+    this.headerState.dpr = window.devicePixelRatio || 1;
+    
     this.headerCanvas.width = this.headerState.w * this.headerState.dpr;
     this.headerCanvas.height = this.headerState.h * this.headerState.dpr;
     this.headerCanvas.style.width = this.headerState.w + 'px';
     this.headerCanvas.style.height = this.headerState.h + 'px';
     
-    this.headerCtx.setTransform(this.headerState.dpr, 0, 0, this.headerState.dpr, 0, 0);
+    this.headerCtx.scale(this.headerState.dpr, this.headerState.dpr);
+    
+    console.log(`📐 Canvas redimensionado: ${this.headerState.w}x${this.headerState.h}`);
   }
 
   setupHeaderInteractions() {
     const header = document.querySelector('header');
     if (!header) return;
 
-    // Botones del header
-    const headerButtons = header.querySelectorAll('a, button, nav a');
+    // Botones del header - buscar más específicamente
+    const headerButtons = header.querySelectorAll('a, button, nav a, .hover\\:text-brand');
     
-    headerButtons.forEach(button => {
+    console.log(`🎯 Encontrados ${headerButtons.length} botones en el header`);
+    
+    headerButtons.forEach((button, index) => {
+      console.log(`🔘 Botón ${index + 1}:`, button.tagName, button.textContent?.trim());
+      
       button.addEventListener('mouseenter', (e) => {
+        console.log('🖱️ Mouse enter en botón:', button.textContent?.trim());
         this.triggerHeaderRipple(e);
         this.showHeaderEffects();
       });
       
       button.addEventListener('mouseleave', () => {
+        console.log('🖱️ Mouse leave en botón:', button.textContent?.trim());
         this.hideHeaderEffects();
       });
     });
@@ -95,17 +123,21 @@ class ParticleEffects {
   }
 
   triggerHeaderRipple(event) {
+    if (!this.headerCanvas) return;
+    
     const rect = this.headerCanvas.getBoundingClientRect();
     const x = event.clientX - rect.left;
     const y = event.clientY - rect.top;
+    
+    console.log(`💫 Ripple en posición: ${x}, ${y}`);
     
     // Crear ripple sutil
     this.ripples.push({
       x: x,
       y: y,
       r: 0,
-      a: 0.15, // Opacidad reducida para ser sutil
-      w: 1.5,  // Línea más delgada
+      a: 0.25, // Opacidad aumentada para ser más visible
+      w: 2.0,  // Línea más gruesa para ser más visible
       maxR: Math.max(this.headerState.w, this.headerState.h) * 0.8
     });
   }
@@ -113,12 +145,14 @@ class ParticleEffects {
   showHeaderEffects() {
     if (this.headerCanvas) {
       this.headerCanvas.style.opacity = '1';
+      console.log('👁️ Mostrando efectos del header');
     }
   }
 
   hideHeaderEffects() {
     if (this.headerCanvas) {
       this.headerCanvas.style.opacity = '0';
+      console.log('👁️ Ocultando efectos del header');
     }
   }
 
@@ -126,6 +160,7 @@ class ParticleEffects {
     const animate = () => {
       if (!this.headerState.running) return;
       
+      // Limpiar canvas
       this.headerCtx.clearRect(0, 0, this.headerState.w, this.headerState.h);
       
       // Ripples automáticos sutiles
@@ -146,9 +181,9 @@ class ParticleEffects {
         this.headerCtx.stroke();
         
         // Animar ripple
-        ripple.r += 1.8; // Velocidad reducida
-        ripple.a *= 0.975; // Desvanecimiento más lento
-        ripple.w = Math.max(0.4, ripple.w * 0.99);
+        ripple.r += 2.0; // Velocidad aumentada para ser más visible
+        ripple.a *= 0.97; // Desvanecimiento más lento
+        ripple.w = Math.max(0.5, ripple.w * 0.995);
         
         // Remover ripples viejos
         if (ripple.a < 0.01 || ripple.r > ripple.maxR) {
@@ -161,6 +196,7 @@ class ParticleEffects {
     
     this.headerState.running = true;
     animate();
+    console.log('🔄 Loop de ripples iniciado');
   }
 
   addSubtleRipple() {
@@ -172,13 +208,15 @@ class ParticleEffects {
       x: centerX + (Math.random() - 0.5) * 100,
       y: centerY + (Math.random() - 0.5) * 40,
       r: 0,
-      a: 0.08, // Muy sutil
-      w: 1.0,
+      a: 0.12, // Más visible
+      w: 1.5,
       maxR: Math.max(this.headerState.w, this.headerState.h) * 0.6
     });
   }
 
   addBokehBackground() {
+    console.log('🎨 Agregando fondo Bokeh...');
+    
     // Agregar Bokeh CSS al body
     const bokehDiv = document.createElement('div');
     bokehDiv.className = 'bokeh-background';
@@ -187,7 +225,7 @@ class ParticleEffects {
       inset: 0;
       pointer-events: none;
       z-index: -1;
-      opacity: 0.6;
+      opacity: 0.8;
     `;
     
     document.body.appendChild(bokehDiv);
@@ -199,10 +237,10 @@ class ParticleEffects {
       bokehStyles.textContent = `
         .bokeh-background {
           background: 
-            radial-gradient(140px 140px at 12% 18%, rgba(0,184,217,.08), transparent 60%),
-            radial-gradient(220px 220px at 88% 12%, rgba(255,255,255,.04), transparent 60%),
-            radial-gradient(160px 160px at 18% 82%, rgba(0,184,217,.06), transparent 60%),
-            radial-gradient(240px 240px at 90% 78%, rgba(255,255,255,.03), transparent 60%);
+            radial-gradient(140px 140px at 12% 18%, rgba(0,184,217,.12), transparent 60%),
+            radial-gradient(220px 220px at 88% 12%, rgba(255,255,255,.06), transparent 60%),
+            radial-gradient(160px 160px at 18% 82%, rgba(0,184,217,.08), transparent 60%),
+            radial-gradient(240px 240px at 90% 78%, rgba(255,255,255,.04), transparent 60%);
           filter: blur(3px);
           animation: bokeh-drift 25s linear infinite alternate;
         }
@@ -219,10 +257,10 @@ class ParticleEffects {
           inset: 0;
           pointer-events: none;
           z-index: -2;
-          opacity: 0.3;
+          opacity: 0.4;
           background: 
-            radial-gradient(300px 300px at 20% 30%, rgba(0,184,217,.03), transparent 70%),
-            radial-gradient(400px 400px at 80% 70%, rgba(0,184,217,.02), transparent 70%);
+            radial-gradient(300px 300px at 20% 30%, rgba(0,184,217,.05), transparent 70%),
+            radial-gradient(400px 400px at 80% 70%, rgba(0,184,217,.03), transparent 70%);
           animation: wave-float 30s ease-in-out infinite;
         }
         
@@ -233,13 +271,19 @@ class ParticleEffects {
       `;
       document.head.appendChild(bokehStyles);
     }
+    
+    console.log('✅ Fondo Bokeh agregado');
   }
 
   initWaveEffects() {
+    console.log('🌊 Inicializando efectos de ondas...');
+    
     // Agregar ondas flotantes sutil
     const waveDiv = document.createElement('div');
     waveDiv.className = 'wave-background';
     document.body.appendChild(waveDiv);
+    
+    console.log('✅ Efectos de ondas inicializados');
   }
 
   // Método para limpiar efectos
@@ -265,6 +309,7 @@ class ParticleEffects {
 
 // Auto-inicializar cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', () => {
+  console.log('📄 DOM cargado, creando ParticleEffects...');
   window.particleEffects = new ParticleEffects();
 });
 
