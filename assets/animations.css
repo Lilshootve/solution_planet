@@ -305,27 +305,7 @@
   opacity: 1 !important;
   visibility: visible !important;
   transform: none !important;
-}
-
-/* Animaciones simples solo cuando JS está habilitado */
-.js-enabled .hero-title {
-  animation: fadeInUp 0.8s ease-out 0.1s forwards;
-}
-
-.js-enabled .hero-subtitle {
-  animation: fadeInUp 0.8s ease-out 0.2s forwards;
-}
-
-.js-enabled .hero-buttons {
-  animation: fadeInUp 0.8s ease-out 0.3s forwards;
-}
-
-.js-enabled .hero-features {
-  animation: fadeInUp 0.8s ease-out 0.4s forwards;
-}
-
-.js-enabled .hero-image {
-  animation: fadeInRight 0.8s ease-out 0.2s forwards;
+  animation: none !important;
 }
 
 /* ===== ANIMACIONES DEL FOOTER ===== */
