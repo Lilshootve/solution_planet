@@ -22,20 +22,37 @@ class ParticleEffects {
     
     // Esperar un poco más para asegurar que el DOM esté completamente listo
     setTimeout(() => {
-      // Inicializar efectos del header
-      this.initHeaderEffects();
-      
-      // Configurar efectos para todos los botones de la página
-      this.setupGlobalButtonEffects();
-      
-      // Agregar Bokeh CSS al body
-      this.addBokehBackground();
-      
-      // Inicializar efectos de ondas sutil
-      this.initWaveEffects();
-      
-      this.isInitialized = true;
-      console.log('✅ ParticleEffects inicializado correctamente');
+      try {
+        // Inicializar efectos del header
+        this.initHeaderEffects();
+        
+        // Configurar efectos para todos los botones de la página
+        this.setupGlobalButtonEffects();
+        
+        // Agregar Bokeh CSS al body
+        this.addBokehBackground();
+        
+        // Inicializar efectos de ondas sutil
+        this.initWaveEffects();
+        
+        this.isInitialized = true;
+        console.log('✅ ParticleEffects inicializado correctamente');
+        
+        // Verificar estado después de un tiempo
+        setTimeout(() => {
+          const status = this.getStatus();
+          console.log('📊 Estado del sistema:', status);
+          
+          if (status.globalButtonsConfigured === 0) {
+            console.warn('⚠️ No se configuraron botones globales, reintentando...');
+            this.setupGlobalButtonEffects();
+          }
+        }, 1000);
+        
+      } catch (error) {
+        console.error('❌ Error durante la inicialización:', error);
+        this.isInitialized = false;
+      }
     }, 100);
   }
 
@@ -129,19 +146,18 @@ class ParticleEffects {
   setupGlobalButtonEffects() {
     console.log('🌐 Configurando efectos para todos los botones de la página...');
     
-    // Buscar todos los botones y enlaces interactivos en toda la página
-    const allButtons = document.querySelectorAll('button, a[href], .btn, .filter-btn, [onclick]');
-    
-    console.log(`🎯 Encontrados ${allButtons.length} botones/enlaces en toda la página`);
-    
-    allButtons.forEach((button, index) => {
+    // Función para configurar efectos en un botón específico
+    const setupButtonEffects = (button) => {
       // Evitar duplicar eventos en botones del header
       if (button.closest('header')) return;
       
       // Evitar botones que ya tienen efectos específicos
       if (button.id === 'whatsapp-button' || button.closest('#whatsapp-button')) return;
       
-      console.log(`🔘 Botón global ${index + 1}:`, button.tagName, button.textContent?.trim()?.substring(0, 30));
+      // Evitar botones que ya tienen efectos configurados
+      if (button.dataset.particleEffectsConfigured) return;
+      
+      console.log(`🔘 Configurando efectos para botón:`, button.tagName, button.textContent?.trim()?.substring(0, 30));
       
       button.addEventListener('mouseenter', (e) => {
         console.log('🖱️ Mouse enter en botón global:', button.textContent?.trim()?.substring(0, 30));
@@ -152,7 +168,48 @@ class ParticleEffects {
         console.log('🖱️ Mouse leave en botón global:', button.textContent?.trim()?.substring(0, 30));
         this.hideGlobalButtonEffects(button);
       });
+      
+      // Marcar como configurado
+      button.dataset.particleEffectsConfigured = 'true';
+    };
+    
+    // Buscar todos los botones y enlaces interactivos en toda la página
+    const allButtons = document.querySelectorAll('button, a[href], .btn, .filter-btn, [onclick]');
+    
+    console.log(`🎯 Encontrados ${allButtons.length} botones/enlaces en toda la página`);
+    
+    allButtons.forEach(setupButtonEffects);
+    
+    // Configurar un observer para detectar nuevos botones que se agreguen dinámicamente
+    const buttonObserver = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        mutation.addedNodes.forEach((node) => {
+          if (node.nodeType === Node.ELEMENT_NODE) {
+            // Buscar botones en el nodo agregado
+            const newButtons = node.querySelectorAll ? node.querySelectorAll('button, a[href], .btn, .filter-btn, [onclick]') : [];
+            newButtons.forEach(setupButtonEffects);
+            
+            // Si el nodo agregado es un botón, configurarlo también
+            if (node.matches && node.matches('button, a[href], .btn, .filter-btn, [onclick]')) {
+              setupButtonEffects(node);
+            }
+          }
+        });
+      });
     });
+    
+    // Observar cambios en el body
+    buttonObserver.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+    
+    // También configurar efectos después de un delay para asegurar que todos los botones estén listos
+    setTimeout(() => {
+      const delayedButtons = document.querySelectorAll('button, a[href], .btn, .filter-btn, [onclick]');
+      console.log(`🎯 Configuración tardía para ${delayedButtons.length} botones`);
+      delayedButtons.forEach(setupButtonEffects);
+    }, 500);
   }
 
   triggerHeaderRipple(event) {
@@ -176,13 +233,15 @@ class ParticleEffects {
   }
 
   triggerGlobalButtonRipple(event, button) {
+    console.log('🎯 Activando ripple para botón:', button.textContent?.trim());
+    
     // Crear un canvas temporal para este botón si no existe
     let buttonCanvas = button.querySelector('.button-particles');
     
     if (!buttonCanvas) {
       buttonCanvas = document.createElement('canvas');
       buttonCanvas.className = 'button-particles';
-      buttonCanvas.style.cssText = 'position:absolute;inset:0;pointer-events:none;z-index:1;opacity:0;transition:opacity 0.3s ease;width:100%;height:100%';
+      buttonCanvas.style.cssText = 'position:absolute;inset:0;pointer-events:none;z-index:10;opacity:0;transition:opacity 0.3s ease;width:100%;height:100%';
       
       // Asegurar que el botón tenga position relative
       if (getComputedStyle(button).position === 'static') {
@@ -190,21 +249,26 @@ class ParticleEffects {
       }
       
       button.appendChild(buttonCanvas);
+      
+      // Configurar el canvas
+      const rect = button.getBoundingClientRect();
+      buttonCanvas.width = rect.width;
+      buttonCanvas.height = rect.height;
     }
     
     const rect = buttonCanvas.getBoundingClientRect();
     const x = event.clientX - rect.left;
     const y = event.clientY - rect.top;
     
-    console.log(`💫 Ripple global en posición: ${x}, ${y}`);
+    console.log(`💫 Ripple global en posición: ${x}, ${y} para botón de tamaño ${rect.width}x${rect.height}`);
     
-    // Crear ripple sutil para botones globales
+    // Crear ripple más visible para botones globales
     const ripple = {
       x: x,
       y: y,
       r: 0,
-      a: 0.2,
-      w: 1.8,
+      a: 0.35, // Opacidad aumentada para ser más visible
+      w: 2.5,  // Línea más gruesa
       maxR: Math.max(rect.width, rect.height) * 0.8,
       canvas: buttonCanvas,
       ctx: buttonCanvas.getContext('2d')
@@ -302,17 +366,26 @@ class ParticleEffects {
       // Limpiar canvas
       ctx.clearRect(0, 0, rect.width, rect.height);
       
-      // Dibujar ripple
+      // Dibujar ripple con color más visible
       ctx.strokeStyle = `rgba(0, 184, 217, ${ripple.a.toFixed(3)})`;
       ctx.lineWidth = ripple.w;
       ctx.beginPath();
       ctx.arc(ripple.x, ripple.y, ripple.r, 0, Math.PI * 2);
       ctx.stroke();
       
-      // Animar ripple
-      ripple.r += 1.5;
-      ripple.a *= 0.96;
-      ripple.w = Math.max(0.3, ripple.w * 0.99);
+      // Agregar un segundo ripple interno para más efecto
+      if (ripple.r > 5) {
+        ctx.strokeStyle = `rgba(0, 184, 217, ${(ripple.a * 0.6).toFixed(3)})`;
+        ctx.lineWidth = ripple.w * 0.7;
+        ctx.beginPath();
+        ctx.arc(ripple.x, ripple.y, ripple.r - 8, 0, Math.PI * 2);
+        ctx.stroke();
+      }
+      
+      // Animar ripple con velocidad y desvanecimiento ajustados
+      ripple.r += 2.0; // Velocidad aumentada
+      ripple.a *= 0.94; // Desvanecimiento más lento
+      ripple.w = Math.max(0.5, ripple.w * 0.98);
       
       requestAnimationFrame(animate);
     };
@@ -416,7 +489,37 @@ class ParticleEffects {
     const waveBackground = document.querySelector('.wave-background');
     if (waveBackground) waveBackground.remove();
     
+    // Limpiar todos los canvas de botones
+    const buttonCanvases = document.querySelectorAll('.button-particles');
+    buttonCanvases.forEach(canvas => canvas.remove());
+    
     this.isInitialized = false;
+  }
+
+  // Método público para reconfigurar efectos
+  reconfigureEffects() {
+    console.log('🔄 Reconfigurando efectos de partículas...');
+    
+    // Limpiar configuración anterior
+    const allButtons = document.querySelectorAll('[data-particle-effects-configured]');
+    allButtons.forEach(button => {
+      delete button.dataset.particleEffectsConfigured;
+      // Remover event listeners anteriores
+      button.replaceWith(button.cloneNode(true));
+    });
+    
+    // Reconfigurar
+    this.setupGlobalButtonEffects();
+  }
+
+  // Método para verificar estado
+  getStatus() {
+    return {
+      isInitialized: this.isInitialized,
+      headerCanvas: !!this.headerCanvas,
+      globalButtonsConfigured: document.querySelectorAll('[data-particle-effects-configured]').length,
+      totalButtons: document.querySelectorAll('button, a[href], .btn, .filter-btn, [onclick]').length
+    };
   }
 }
 
