@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Particle Playground — Solution Planet</title>
+  <meta name="description" content="Try 6 particle styles without external CDNs. Copy lightweight snippets to embed." />
+
+  <!-- Fonts & Tailwind -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{colors:{brand:{DEFAULT:'#00B8D9',dark:'#0096B3'},carbon:'#0A0A0A'},fontFamily:{sans:['Montserrat','ui-sans-serif','system-ui']},boxShadow:{soft:'0 10px 30px rgba(0,0,0,.12)'}}}}</script>
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" href="/public_html/assets/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/public_html/assets/favicon.svg" />
+  <link rel="shortcut icon" href="/public_html/assets/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/public_html/assets/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="Solution Planet" />
+  <link rel="manifest" href="/public_html/assets/site.webmanifest" />
+
+  <style>
+    html{scroll-behavior:smooth}
+    .demo{height: 320px}
+    @media(min-width:1024px){.demo{height: 420px}}
+    .badge{backdrop-filter: blur(4px)}
+    .btn{--tw-ring-color: rgba(0,184,217,.35)}
+    /* CSS Bokeh */
+    .bokeh{position:absolute;inset:0;background:
+      radial-gradient(140px 140px at 12% 18%, rgba(0,184,217,.12), transparent 60%),
+      radial-gradient(220px 220px at 88% 12%, rgba(255,255,255,.08), transparent 60%),
+      radial-gradient(160px 160px at 18% 82%, rgba(0,184,217,.10), transparent 60%),
+      radial-gradient(240px 240px at 90% 78%, rgba(255,255,255,.06), transparent 60%);
+      filter: blur(2px);animation: drift 20s linear infinite alternate}
+    @keyframes drift{to{transform:translate3d(0,-24px,0) scale(1.03)}}
+  </style>
+</head>
+<body class="bg-neutral-50 text-neutral-800 font-sans">
+  <!-- Header -->
+  <header class="border-b bg-white/90 backdrop-blur">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <a href="index.html#top" class="flex items-center gap-3">
+        <img src="assets/logo.png" alt="Solution Planet" class="h-[4.5rem] w-auto">
+        <span class="font-semibold tracking-wide">Particle Playground</span>
+      </a>
+      <a href="index.html#contact" class="text-sm text-brand hover:underline">Back to site</a>
+    </div>
+  </header>
+
+  <main class="py-10 lg:py-14">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl lg:text-4xl font-extrabold">Try 6 Particle Styles (No CDN)</h1>
+      <p class="mt-2 text-neutral-600">Todo corre con <strong>JS nativo</strong>. Usa <strong>Start/Stop</strong> para medir rendimiento. Con <em>Copy snippet</em> pegas un bloque listo en tu página.</p>
+
+      <div class="mt-8 grid lg:grid-cols-2 gap-8">
+        <!-- 1. Network -->
+        <section class="relative rounded-2xl border bg-white shadow-sm overflow-hidden">
+          <div id="p-net" class="demo relative">
+            <canvas id="cv-net" class="absolute inset-0 z-0"></canvas>
+          </div>
+          <div class="absolute top-4 left-4 badge rounded-full bg-white/50 text-xs px-3 py-1">Native JS · Network</div>
+          <div class="p-5 flex items-center justify-between border-t bg-white">
+            <div class="text-sm text-neutral-700">Puntos con líneas cercanas; efecto elegante.</div>
+            <div class="flex gap-2">
+              <button class="btn rounded-lg border px-3 py-2 text-sm" data-action="copy" data-snippet="net">Copy snippet</button>
+              <button class="btn rounded-lg border px-3 py-2 text-sm" data-action="toggle" data-id="net">Start/Stop</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- 2. Bubbles -->
+        <section class="relative rounded-2xl border bg-white shadow-sm overflow-hidden">
+          <div id="p-bubbles" class="demo relative">
+            <canvas id="cv-bubbles" class="absolute inset-0 z-0"></canvas>
+          </div>
+          <div class="absolute top-4 left-4 badge rounded-full bg-white/50 text-xs px-3 py-1">Native JS · Bubbles</div>
+          <div class="p-5 flex items-center justify-between border-t bg-white">
+            <div class="text-sm text-neutral-700">Burbujas ascendentes suaves.</div>
+            <div class="flex gap-2">
+              <button class="btn rounded-lg border px-3 py-2 text-sm" data-action="copy" data-snippet="bubbles">Copy snippet</button>
+              <button class="btn rounded-lg border px-3 py-2 text-sm" data-action="toggle" data-id="bubbles">Start/Stop</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- 3. Starfield -->
+        <section class="relative rounded-2xl border bg-white shadow-sm overflow-hidden">
+          <div id="p-stars" class="demo relative">
+            <canvas id="cv-stars" class="absolute inset-0 z-0"></canvas>
+          </div>
+          <div class="absolute top-4 left-4 badge rounded-full bg-white/50 text-xs px-3 py-1">Native JS · Starfield</div>
+          <div class="p-5 flex items-center justify-between border-t bg-white">
+            <div class="text-sm text-neutral-700">Cielo con estrellas centelleando.</div>
+            <div class="flex gap-2">
+              <button class="btn rounded-lg border px-3 py-2 text-sm" data-action="copy" data-snippet="stars">Copy snippet</button>
+              <button class="btn rounded-lg border px-3 py-2 text-sm" data-action="toggle" data-id="stars">Start/Stop</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- 4. Orbits (Planet vibe) -->
+        <section class="relative rounded-2xl border bg-neutral-900 text-white shadow-sm overflow-hidden">
+          <div id="p-orbits" class="demo relative">
+            <canvas id="cv-orbits" class="absolute inset-0 z-0"></canvas>
+          </div>
+          <div class="absolute top-4 left-4 badge rounded-full bg-white/10 text-xs px-3 py-1">Native JS · Orbits</div>
+          <div class="p-5 flex items-center justify-between border-t border-white/10 bg-neutral-900/80">
+            <div class="text-sm text-neutral-200">Anillos orbitales con puntos brillantes.</div>
+            <div class="flex gap-2">
+              <button class="btn rounded-lg border px-3 py-2 text-sm" data-action="copy" data-snippet="orbits">Copy snippet</button>
+              <button class="btn rounded-lg border px-3 py-2 text-sm" data-action="toggle" data-id="orbits">Start/Stop</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- 5. CSS — Bokeh (no JS) -->
+        <section class="relative rounded-2xl border bg-white shadow-sm overflow-hidden">
+          <div id="p-bokeh" class="demo relative">
+            <div class="bokeh"></div>
+          </div>
+          <div class="absolute top-4 left-4 badge rounded-full bg-white/50 text-xs px-3 py-1">CSS · Bokeh</div>
+          <div class="p-5 flex items-center justify-between border-t bg-white">
+            <div class="text-sm text-neutral-700">Zero‑JS blurred circles drifting.</div>
+            <div class="flex gap-2">
+              <button class="btn rounded-lg border px-3 py-2 text-sm" data-action="copy" data-snippet="bokeh">Copy snippet</button>
+              <button class="btn rounded-lg border px-3 py-2 text-sm" data-action="toggle-css" data-id="bokeh">Start/Stop</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- 6. Bass Ripples (boom bass) -->
+        <section class="relative rounded-2xl border bg-white shadow-sm overflow-hidden">
+          <div id="p-bass" class="demo relative">
+            <canvas id="cv-bass" class="absolute inset-0 z-0"></canvas>
+          </div>
+          <div class="absolute top-4 left-4 badge rounded-full bg-white/50 text-xs px-3 py-1">Native JS · Bass Ripples</div>
+          <div class="p-5 flex items-center justify-between border-t bg-white">
+            <div class="text-sm text-neutral-700">Ondas concéntricas que pulsan tipo “boom bass”. Click para pulsar.</div>
+            <div class="flex gap-2">
+              <button class="btn rounded-lg border px-3 py-2 text-sm" data-action="copy" data-snippet="bass">Copy snippet</button>
+              <button class="btn rounded-lg border px-3 py-2 text-sm" data-action="toggle" data-id="bass">Start/Stop</button>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <p class="mt-8 text-xs text-neutral-500">Sin dependencias. Animaciones optimizadas a 60fps (con caída suave en equipos lentos).</p>
+    </div>
+  </main>
+
+  <footer class="bg-neutral-950 text-neutral-300 mt-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex items-center justify-between">
+      <p class="text-sm">© <span id="year"></span> Solution Planet LLC.</p>
+      <div class="text-sm flex gap-5"><a class="hover:text-white" href="privacy.html">Privacy</a><a class="hover:text-white" href="terms.html">Terms</a></div>
+    </div>
+  </footer>
+
+  <script>
+    // Brand color
+    const BRAND = '#00B8D9';
+
+    function makeCanvas(id){
+      const canvas = document.getElementById('cv-'+id);
+      const parent = canvas.parentElement;
+      const ctx = canvas.getContext('2d');
+      const state = { running: true, raf: null, w: 0, h: 0, dpr: Math.max(1, window.devicePixelRatio||1) };
+      function resize(){
+        const r = parent.getBoundingClientRect();
+        state.w = Math.max(1, Math.floor(r.width));
+        state.h = Math.max(1, Math.floor(r.height));
+        canvas.width = state.w * state.dpr;
+        canvas.height = state.h * state.dpr;
+        canvas.style.width = state.w+'px';
+        canvas.style.height = state.h+'px';
+        ctx.setTransform(state.dpr,0,0,state.dpr,0,0);
+      }
+      resize();
+      const ro = new ResizeObserver(resize); ro.observe(parent);
+      return { canvas, ctx, state };
+    }
+
+    function loop(draw, state){
+      function frame(){ if(!state.running) return; draw(); state.raf = requestAnimationFrame(frame); }
+      state.running = true; frame();
+      return ()=>{ state.running = false; if(state.raf) cancelAnimationFrame(state.raf); };
+    }
+
+    // 1) Network
+    function initNetwork(){
+      const {ctx, state} = makeCanvas('net');
+      const N = 70; const pts = []; const maxDist = 120; const spd = 0.25;
+      for(let i=0;i<N;i++) pts.push({x:Math.random()*state.w, y:Math.random()*state.h, vx:(Math.random()-0.5)*spd, vy:(Math.random()-0.5)*spd});
+      loop(()=>{
+        ctx.clearRect(0,0,state.w,state.h);
+        // Lines
+        ctx.lineWidth = 1; ctx.strokeStyle = BRAND + '26'; // ~0.15 alpha
+        for(let i=0;i<N;i++){
+          for(let j=i+1;j<N;j++){
+            const dx = pts[i].x-pts[j].x, dy = pts[i].y-pts[j].y; const d = Math.hypot(dx,dy);
+            if(d<maxDist){ ctx.globalAlpha = 1-d/maxDist; ctx.beginPath(); ctx.moveTo(pts[i].x, pts[i].y); ctx.lineTo(pts[j].x, pts[j].y); ctx.stroke(); }
+          }
+        }
+        // Points
+        ctx.globalAlpha = 1; ctx.fillStyle = BRAND; 
+        for(const p of pts){ ctx.beginPath(); ctx.arc(p.x,p.y,2,0,Math.PI*2); ctx.fill(); p.x+=p.vx; p.y+=p.vy; if(p.x<0||p.x>state.w) p.vx*=-1; if(p.y<0||p.y>state.h) p.vy*=-1; }
+      }, state);
+      return { state };
+    }
+
+    // 2) Bubbles
+    function initBubbles(){
+      const {ctx, state} = makeCanvas('bubbles');
+      const N = 28; const bubbles=[];
+      const spawn = ()=>({x:Math.random()*state.w, y:state.h+20, r:6+Math.random()*16, v:0.4+Math.random()*0.8, drift:(Math.random()*0.6-0.3)});
+      for(let i=0;i<N;i++) bubbles.push(spawn());
+      loop(()=>{
+        ctx.clearRect(0,0,state.w,state.h); ctx.fillStyle = BRAND+'2d'; // ~0.18 alpha
+        for(const b of bubbles){
+          ctx.beginPath(); ctx.arc(b.x,b.y,b.r,0,Math.PI*2); ctx.fill();
+          b.y -= b.v; b.x += b.drift; if(b.y < -30) Object.assign(b, spawn());
+        }
+      }, state);
+      return { state };
+    }
+
+    // 3) Starfield
+    function initStars(){
+      const {ctx, state} = makeCanvas('stars');
+      const N = 100; const stars=[]; let t=0; const rand=(a,b)=>a+Math.random()*(b-a);
+      for(let i=0;i<N;i++) stars.push({x:Math.random()*state.w, y:Math.random()*state.h, s:rand(0.6,1.8), tw:Math.random()*Math.PI*2});
+      loop(()=>{
+        t+=0.02; ctx.clearRect(0,0,state.w,state.h);
+        for(const st of stars){
+          const alpha = 0.3 + 0.5*Math.abs(Math.sin(t+st.tw));
+          ctx.fillStyle = `rgba(255,255,255,${alpha.toFixed(3)})`;
+          ctx.fillRect(st.x, st.y, st.s, st.s);
+          st.x += 0.02; if(st.x>state.w) st.x=0; // sutil drift
+        }
+      }, state);
+      return { state };
+    }
+
+    // 4) Orbits
+    function initOrbits(){
+      const {ctx, state} = makeCanvas('orbits');
+      const rings = [ {r:60, n:10, sp:0.015}, {r:100, n:14, sp:-0.01}, {r:150, n:18, sp:0.008} ];
+      let ang = 0; const cx=()=>state.w/2, cy=()=>state.h/2;
+      loop(()=>{
+        ctx.clearRect(0,0,state.w,state.h);
+        // rings
+        ctx.strokeStyle = 'rgba(255,255,255,0.15)'; ctx.lineWidth=1;
+        for(const rk of rings){ ctx.beginPath(); ctx.arc(cx(), cy(), rk.r, 0, Math.PI*2); ctx.stroke(); }
+        // dots
+        for(const rk of rings){
+          for(let i=0;i<rk.n;i++){
+            const a = ang + i*(Math.PI*2/rk.n);
+            const x = cx() + Math.cos(a)*rk.r;
+            const y = cy() + Math.sin(a)*rk.r;
+            ctx.beginPath(); ctx.fillStyle = BRAND; ctx.arc(x,y,2.2,0,Math.PI*2); ctx.fill();
+          }
+          ang += rk.sp;
+        }
+      }, state);
+      return { state };
+    }
+
+    // 6) Bass Ripples (boom bass)
+    function initBass(){
+      const {canvas, ctx, state} = makeCanvas('bass');
+      const cx = ()=>state.w/2, cy=()=>state.h/2;
+      let rings = []; let last=0; const BPM=90; const INTERVAL = (60_000/BPM); // ms
+      canvas.addEventListener('click', ()=> addRing(0.55, 3.5));
+      function addRing(alpha=0.4, lw=3){ rings.push({ r:0, a:alpha, w:lw }); }
+      loop(()=>{
+        const now = performance.now();
+        if(now - last > INTERVAL){ last = now; addRing(0.42, 3.2); }
+        ctx.clearRect(0,0,state.w,state.h);
+        // subtle pulsing glow
+        const t = now*0.004; const glow = 0.08 + 0.04*Math.sin(t);
+        ctx.fillStyle = `rgba(0,184,217,${glow.toFixed(3)})`;
+        ctx.beginPath(); ctx.arc(cx(), cy(), 6, 0, Math.PI*2); ctx.fill();
+        // rings
+        for(let i=rings.length-1;i>=0;i--){
+          const k = rings[i];
+          ctx.strokeStyle = `rgba(0,184,217,${k.a.toFixed(3)})`;
+          ctx.lineWidth = k.w;
+          ctx.beginPath(); ctx.arc(cx(), cy(), k.r, 0, Math.PI*2); ctx.stroke();
+          k.r += 2.2; k.a *= 0.972; k.w = Math.max(0.6, k.w*0.985);
+          if(k.a < 0.02 || k.r > Math.max(state.w, state.h)) rings.splice(i,1);
+        }
+      }, state);
+      return { state };
+    }
+
+    // Boot all
+    const engines = {
+      net: initNetwork(),
+      bubbles: initBubbles(),
+      stars: initStars(),
+      orbits: initOrbits(),
+      bass: initBass()
+    };
+
+    // Factories to restart engines
+    const FACTORY = { net: initNetwork, bubbles: initBubbles, stars: initStars, orbits: initOrbits, bass: initBass };
+
+    // UI toggles (re-init on start)
+    document.querySelectorAll('[data-action="toggle"]').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const id = btn.dataset.id; const eng = engines[id]; if(!eng) { engines[id] = FACTORY[id](); return; }
+        if(eng.state.running){ eng.state.running = false; }
+        else { engines[id] = FACTORY[id](); }
+      });
+    });
+
+    document.querySelectorAll('[data-action="toggle-css"]').forEach(btn=>{
+      let on=true; btn.addEventListener('click',()=>{ on=!on; document.querySelector('#p-bokeh .bokeh').style.animationPlayState = on?'running':'paused'; });
+    });
+
+    // Copy snippets (self-contained, no CDN)
+    const SNIPPETS = {
+      net: `<div id="heroNet" style="position:relative;height:360px"><canvas id="cv-heroNet" style="position:absolute;inset:0"></canvas></div>
+<script>(function(){const BRAND='#00B8D9';const c=document.getElementById('cv-heroNet'),p=c.parentElement,x=c.getContext('2d');let W=0,H=0,DPR=Math.max(1,devicePixelRatio||1);function R(){const r=p.getBoundingClientRect();W=r.width|0;H=r.height|0;c.width=W*DPR;c.height=H*DPR;c.style.width=W+'px';c.style.height=H+'px';x.setTransform(DPR,0,0,DPR,0,0);}R();new ResizeObserver(R).observe(p);const N=70,P=[];for(let i=0;i<N;i++)P.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.25,vy:(Math.random()-.5)*.25});(function L(){x.clearRect(0,0,W,H);x.lineWidth=1;x.strokeStyle=BRAND+'26';for(let i=0;i<N;i++){for(let j=i+1;j<N;j++){const dx=P[i].x-P[j].x,dy=P[i].y-P[j].y,d=Math.hypot(dx,dy);if(d<120){x.globalAlpha=1-d/120;x.beginPath();x.moveTo(P[i].x,P[i].y);x.lineTo(P[j].x,P[j].y);x.stroke();}}}x.globalAlpha=1;x.fillStyle=BRAND;for(const p of P){x.beginPath();x.arc(p.x,p.y,2,0,6.283);x.fill();p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;}requestAnimationFrame(L)})();<\/script>`,
+      bubbles: `<div id="heroBub" style="position:relative;height:360px;background:#fff"><canvas id="cv-heroBub" style="position:absolute;inset:0"></canvas></div>
+<script>(function(){const BRAND='#00B8D9';const c=document.getElementById('cv-heroBub'),p=c.parentElement,x=c.getContext('2d');let W=0,H=0,DPR=Math.max(1,devicePixelRatio||1);function R(){const r=p.getBoundingClientRect();W=r.width|0;H=r.height|0;c.width=W*DPR;c.height=H*DPR;c.style.width=W+'px';c.style.height=H+'px';x.setTransform(DPR,0,0,DPR,0,0);}R();new ResizeObserver(R).observe(p);const N=28,B=[];const S=()=>({x:Math.random()*W,y:H+20,r:6+Math.random()*16,v:.4+Math.random()*.8,d:(Math.random()*.6-.3)});for(let i=0;i<N;i++)B.push(S());(function L(){x.clearRect(0,0,W,H);x.fillStyle=BRAND+'2d';for(const b of B){x.beginPath();x.arc(b.x,b.y,b.r,0,6.283);x.fill();b.y-=b.v;b.x+=b.d;if(b.y<-30)Object.assign(b,S());}requestAnimationFrame(L)})();})();<\/script>`,
+      stars: `<div id="heroStars" style="position:relative;height:360px;background:#0b0b0b"><canvas id="cv-heroStars" style="position:absolute;inset:0"></canvas></div>
+<script>(function(){const c=document.getElementById('cv-heroStars'),p=c.parentElement,x=c.getContext('2d');let W=0,H=0,DPR=Math.max(1,devicePixelRatio||1);function R(){const r=p.getBoundingClientRect();W=r.width|0;H=r.height|0;c.width=W*DPR;c.height=H*DPR;c.style.width=W+'px';c.style.height=H+'px';x.setTransform(DPR,0,0,DPR,0,0);}R();new ResizeObserver(R).observe(p);const N=100,S=[];let t=0;for(let i=0;i<N;i++)S.push({x:Math.random()*W,y:Math.random()*H,s:.6+Math.random()*1.2,w:Math.random()*6.283});(function L(){t+=.02;x.clearRect(0,0,W,H);for(const s of S){const a=.3+.5*Math.abs(Math.sin(t+s.w));x.fillStyle='rgba(255,255,255,'+a.toFixed(3)+')';x.fillRect(s.x,s.y,s.s,s.s);s.x+=.02;if(s.x>W)s.x=0;}requestAnimationFrame(L)})();})();<\/script>`,
+      orbits: `<div id="heroOrb" style="position:relative;height:360px;background:#0b0b0b"><canvas id="cv-heroOrb" style="position:absolute;inset:0"></canvas></div>
+<script>(function(){const BRAND='#00B8D9';const c=document.getElementById('cv-heroOrb'),p=c.parentElement,x=c.getContext('2d');let W=0,H=0,DPR=Math.max(1,devicePixelRatio||1);function R(){const r=p.getBoundingClientRect();W=r.width|0;H=r.height|0;c.width=W*DPR;c.height=H*DPR;c.style.width=W+'px';c.style.height=H+'px';x.setTransform(DPR,0,0,DPR,0,0);}R();new ResizeObserver(R).observe(p);const rings=[{r:60,n:10,sp:.015},{r:100,n:14,sp:-.01},{r:150,n:18,sp:.008}];let ang=0;function L(){x.clearRect(0,0,W,H);x.strokeStyle='rgba(255,255,255,.15)';x.lineWidth=1;const cx=W/2,cy=H/2;for(const rk of rings){x.beginPath();x.arc(cx,cy,rk.r,0,6.283);x.stroke();}for(const rk of rings){for(let i=0;i<rk.n;i++){const a=ang+i*(6.283/rk.n);const X=cx+Math.cos(a)*rk.r;const Y=cy+Math.sin(a)*rk.r;x.beginPath();x.fillStyle=BRAND;x.arc(X,Y,2.2,0,6.283);x.fill();}ang+=rk.sp;}requestAnimationFrame(L)}L();})();<\/script>`,
+      bass: `<div id="heroBass" style="position:relative;height:360px;background:#fff"><canvas id="cv-heroBass" style="position:absolute;inset:0"></canvas></div>
+<script>(function(){const BRAND='#00B8D9';const c=document.getElementById('cv-heroBass'),p=c.parentElement,x=c.getContext('2d');let W=0,H=0,DPR=Math.max(1,devicePixelRatio||1);function R(){const r=p.getBoundingClientRect();W=r.width|0;H=r.height|0;c.width=W*DPR;c.height=H*DPR;c.style.width=W+'px';c.style.height=H+'px';x.setTransform(DPR,0,0,DPR,0,0);}R();new ResizeObserver(R).observe(p);let rings=[],last=0,BPM=90,INT=6e4/BPM;function addRing(a=.42,w=3.2){rings.push({r:0,a,w});}c.addEventListener('click',()=>addRing(.55,3.5));(function L(t){if(!t)t=performance.now();if(t-last>INT){last=t;addRing();}x.clearRect(0,0,W,H);const cx=W/2,cy=H/2;const glow=.08+.04*Math.sin(t*.004);x.fillStyle='rgba(0,184,217,'+glow.toFixed(3)+')';x.beginPath();x.arc(cx,cy,6,0,6.283);x.fill();for(let i=rings.length-1;i>=0;i--){const k=rings[i];x.strokeStyle='rgba(0,184,217,'+k.a.toFixed(3)+')';x.lineWidth=k.w;x.beginPath();x.arc(cx,cy,k.r,0,6.283);x.stroke();k.r+=2.2;k.a*=.972;k.w=Math.max(.6,k.w*.985);if(k.a<.02||k.r>Math.max(W,H))rings.splice(i,1);}requestAnimationFrame(L)})(0);})();<\/script>`,
+      bokeh: `<div class="absolute inset-0 -z-10 overflow-hidden"><div class="bokeh"></div></div>
+<style>.bokeh{position:absolute;inset:0;background:radial-gradient(140px 140px at 12% 18%, rgba(0,184,217,.12), transparent 60%),radial-gradient(220px 220px at 88% 12%, rgba(255,255,255,.08), transparent 60%),radial-gradient(160px 160px at 18% 82%, rgba(0,184,217,.10), transparent 60%),radial-gradient(240px 240px at 90% 78%, rgba(255,255,255,.06), transparent 60%);filter:blur(2px);animation:drift 20s linear infinite alternate}@keyframes drift{to{transform:translate3d(0,-24px,0) scale(1.03)}}</style>`
+    };
+
+    document.querySelectorAll('[data-action="copy"]').forEach(btn=>{
+      btn.addEventListener('click', async ()=>{
+        const key = btn.dataset.snippet; const code = SNIPPETS[key];
+        try { await navigator.clipboard.writeText(code); btn.textContent='Copied!'; setTimeout(()=>btn.textContent='Copy snippet',1500); }
+        catch(e){ alert('Copy failed.'); }
+      });
+    });
+
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
