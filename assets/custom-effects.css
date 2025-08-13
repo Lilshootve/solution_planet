@@ -73,16 +73,42 @@
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-#whatsapp-button:hover {
-  transform: translateY(-2px) scale(1.05);
-}
-
 #whatsapp-button a {
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   box-shadow: 0 10px 25px rgba(0, 184, 217, 0.3);
 }
 
 #whatsapp-button a:hover {
   box-shadow: 0 15px 35px rgba(0, 184, 217, 0.4);
+  transform: translateY(-2px) scale(1.05);
+}
+
+/* Indicador de estado online */
+#whatsapp-button .bg-green-500 {
+  animation: pulse-green 2s infinite;
+}
+
+@keyframes pulse-green {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
+}
+
+/* Efecto de pulso sutil */
+#whatsapp-button .animate-ping {
+  animation: ping-subtle 3s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes ping-subtle {
+  75%, 100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
 }
 
 /* Efectos para botones globales */
