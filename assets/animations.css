@@ -298,23 +298,76 @@
 
 /* ===== ANIMACIONES DEL HERO ===== */
 .hero-title {
-  animation: fadeInUp 1s ease-out 0.2s both;
+  opacity: 1;
+  transform: translateY(0);
+  animation: fadeInUp 1s ease-out 0.2s forwards;
 }
 
 .hero-subtitle {
-  animation: fadeInUp 1s ease-out 0.4s both;
+  opacity: 1;
+  transform: translateY(0);
+  animation: fadeInUp 1s ease-out 0.4s forwards;
 }
 
 .hero-buttons {
-  animation: fadeInUp 1s ease-out 0.6s both;
+  opacity: 1;
+  transform: translateY(0);
+  animation: fadeInUp 1s ease-out 0.6s forwards;
 }
 
 .hero-features {
-  animation: fadeInUp 1s ease-out 0.8s both;
+  opacity: 1;
+  transform: translateY(0);
+  animation: fadeInUp 1s ease-out 0.8s forwards;
 }
 
 .hero-image {
-  animation: fadeInRight 1s ease-out 0.4s both;
+  opacity: 1;
+  transform: translateX(0);
+  animation: fadeInRight 1s ease-out 0.4s forwards;
+}
+
+/* Fallback para navegadores que no soportan animaciones */
+@supports not (animation: fadeInUp 1s ease-out) {
+  .hero-title,
+  .hero-subtitle,
+  .hero-buttons,
+  .hero-features,
+  .hero-image {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* Asegurar visibilidad del hero en caso de fallo */
+.hero-title,
+.hero-subtitle,
+.hero-buttons,
+.hero-features,
+.hero-image {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Solo aplicar animaciones si JavaScript está habilitado */
+.js-enabled .hero-title {
+  animation: fadeInUp 1s ease-out 0.2s forwards;
+}
+
+.js-enabled .hero-subtitle {
+  animation: fadeInUp 1s ease-out 0.4s forwards;
+}
+
+.js-enabled .hero-buttons {
+  animation: fadeInUp 1s ease-out 0.6s forwards;
+}
+
+.js-enabled .hero-features {
+  animation: fadeInUp 1s ease-out 0.8s forwards;
+}
+
+.js-enabled .hero-image {
+  animation: fadeInRight 1s ease-out 0.4s forwards;
 }
 
 /* ===== ANIMACIONES DEL FOOTER ===== */
@@ -366,3 +419,4 @@
 .transition-elastic {
   transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
+

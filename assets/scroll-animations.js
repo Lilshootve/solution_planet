@@ -280,6 +280,9 @@ document.head.appendChild(styleSheet);
 
 // Inicializar cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', () => {
+  // Agregar clase js-enabled al body para activar animaciones
+  document.body.classList.add('js-enabled');
+  
   const scrollAnimations = new ScrollAnimations();
   
   // Reinicializar después de que se carguen los servicios
