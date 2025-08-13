@@ -1,5 +1,5 @@
 // Solution Planet - Particle Effects System
-// Efectos sutil para dar vida a la web
+// Efectos sutil para dar vida a la web - OPTIMIZADO PARA RENDIMIENTO
 
 class ParticleEffects {
   constructor() {
@@ -12,13 +12,24 @@ class ParticleEffects {
     this.bpm = 140; // Más sutil que el original
     this.rippleInterval = (60_000 / this.bpm);
     
+    // Optimización de rendimiento
+    this.isScrolling = false;
+    this.scrollTimeout = null;
+    this.performanceMode = false;
+    
     this.init();
   }
 
   init() {
     if (this.isInitialized) return;
     
-    console.log('🚀 Inicializando ParticleEffects...');
+    console.log('🚀 Inicializando ParticleEffects optimizado...');
+    
+    // Detectar modo de rendimiento
+    this.detectPerformanceMode();
+    
+    // Optimización de scroll
+    this.optimizeScrollPerformance();
     
     // Esperar un poco más para asegurar que el DOM esté completamente listo
     setTimeout(() => {
@@ -36,7 +47,7 @@ class ParticleEffects {
         this.initWaveEffects();
         
         this.isInitialized = true;
-        console.log('✅ ParticleEffects inicializado correctamente');
+        console.log('✅ ParticleEffects optimizado inicializado correctamente');
         
         // Verificar estado después de un tiempo
         setTimeout(() => {

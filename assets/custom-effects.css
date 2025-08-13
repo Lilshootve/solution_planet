@@ -1,6 +1,42 @@
 /* Solution Planet - Custom Effects CSS */
 /* Estilos mejorados para efectos de partículas y animaciones */
 
+/* Optimizaciones de rendimiento para scroll */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Optimización para scroll suave */
+  -webkit-overflow-scrolling: touch;
+}
+
+body {
+  /* Optimización para renderizado */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Mejorar rendimiento de scroll */
+  will-change: scroll-position;
+}
+
+/* Optimización para elementos con transform */
+.glass, .filter-btn, button, a {
+  /* Hardware acceleration para mejor rendimiento */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Optimización para animaciones */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 /* Efectos de partículas del header */
 #header-particles {
   position: absolute !important;
@@ -323,11 +359,6 @@ header nav a:hover {
 /* Mejoras generales de transiciones */
 * {
   transition: all 0.2s ease;
-}
-
-/* Efectos de scroll suave */
-html {
-  scroll-behavior: smooth;
 }
 
 /* Mejoras para elementos glass */
