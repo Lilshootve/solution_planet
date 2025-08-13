@@ -145,6 +145,60 @@ button[onclick*="openWhatsApp"]:hover {
   z-index: 1;
 }
 
+/* Estilos especiales para el hero con imagen de fondo */
+#top {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+#top .absolute.inset-0 {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Efecto de parallax sutil para la imagen de fondo */
+#top .absolute.inset-0 img {
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+}
+
+/* Mejoras para el contenido del hero */
+#top .glass {
+  backdrop-filter: blur(12px) !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  transition: all 0.3s ease !important;
+}
+
+#top .glass:hover {
+  background: rgba(255, 255, 255, 0.15) !important;
+  transform: translateY(-3px) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Efectos para botones del hero */
+#top a[href] {
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+#top a[href]:hover {
+  transform: translateY(-2px);
+}
+
+/* Responsive para el hero */
+@media (max-width: 768px) {
+  #top {
+    min-height: 80vh;
+  }
+  
+  #top .glass {
+    backdrop-filter: blur(8px) !important;
+  }
+}
+
 /* Efectos para las tarjetas de productos */
 #products .rounded-2xl {
   position: relative;
