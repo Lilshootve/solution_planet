@@ -17,6 +17,9 @@
   <!-- Custom Effects CSS -->
   <link rel="stylesheet" href="assets/custom-effects.css">
   
+  <!-- Animations CSS -->
+  <link rel="stylesheet" href="assets/animations.css">
+  
   <script>
     tailwind.config = {
       theme: {
@@ -32,6 +35,9 @@
   
   <!-- Particle Effects System -->
   <script src="assets/particle-effects.js"></script>
+  
+  <!-- Scroll Animations System -->
+  <script src="assets/scroll-animations.js"></script>
   
   <!-- Favicons -->
   <link rel="icon" type="image/png" href="/assets/favicon-96x96.png" sizes="96x96" />
@@ -50,9 +56,9 @@
         <!-- brand text removed -->
       </a>
       <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
-        <a href="services.html" class="hover:text-brand">Services</a>
-        <a href="#products" class="hover:text-brand">Products</a>
-        <a href="#contact" class="hover:text-brand">Contact</a>
+        <a href="services.html" class="hover:text-brand nav-link-animated">Services</a>
+        <a href="#products" class="hover:text-brand nav-link-animated">Products</a>
+        <a href="#contact" class="hover:text-brand nav-link-animated">Contact</a>
       </nav>
     </div>
   </header>
@@ -70,23 +76,23 @@
     
     <!-- Contenido del hero -->
     <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 grid lg:grid-cols-2 gap-10 items-center">
-      <div>
-        <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight">Large‑Scale AV Solutions for Conventions, Auditoriums & Exhibition Stands</h1>
-        <p class="mt-5 text-neutral-300 text-lg">We sell, rent, install and support LED walls, pro audio, projection, lighting and staging — end‑to‑end.</p>
-        <div class="mt-8 flex flex-wrap gap-3">
-          <a href="services.html" class="inline-flex items-center rounded-xl border border-white/20 px-5 py-3 hover:bg-white/10 transition-colors duration-300">View Services</a>
-          <a href="#contact" class="inline-flex items-center rounded-xl bg-brand px-5 py-3 text-white font-semibold shadow-soft hover:bg-brand-dark transition-colors duration-300">Contact</a>
+              <div>
+          <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight hero-title">Large‑Scale AV Solutions for Conventions, Auditoriums & Exhibition Stands</h1>
+          <p class="mt-5 text-neutral-300 text-lg hero-subtitle">We sell, rent, install and support LED walls, pro audio, projection, lighting and staging — end‑to‑end.</p>
+          <div class="mt-8 flex flex-wrap gap-3 hero-buttons">
+            <a href="services.html" class="inline-flex items-center rounded-xl border border-white/20 px-5 py-3 hover:bg-white/10 transition-colors duration-300 btn-animated">View Services</a>
+            <a href="#contact" class="inline-flex items-center rounded-xl bg-brand px-5 py-3 text-white font-semibold shadow-soft hover:bg-brand-dark transition-colors duration-300 btn-animated">Contact</a>
+          </div>
+          <div class="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm text-neutral-300 hero-features">
+            <div class="glass rounded-xl p-4 hover-lift">End‑to‑End Delivery</div>
+            <div class="glass rounded-xl p-4 hover-lift">High Impact Visuals</div>
+            <div class="glass rounded-xl p-4 hover-lift">Certified Technicians</div>
+            <div class="glass rounded-xl p-4 hover-lift">24/7 Support</div>
+          </div>
         </div>
-        <div class="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm text-neutral-300">
-          <div class="glass rounded-xl p-4">End‑to‑End Delivery</div>
-          <div class="glass rounded-xl p-4">High Impact Visuals</div>
-          <div class="glass rounded-xl p-4">Certified Technicians</div>
-          <div class="glass rounded-xl p-4">24/7 Support</div>
+              <div class="flex justify-center lg:justify-end">
+          <img src="assets/hero-led.jpg" alt="LED wall and stage" class="rounded-2xl shadow-soft w-full max-w-xl object-cover hero-image" onerror="this.style.display='none'">
         </div>
-      </div>
-      <div class="flex justify-center lg:justify-end">
-        <img src="assets/hero-led.jpg" alt="LED wall and stage" class="rounded-2xl shadow-soft w-full max-w-xl object-cover" onerror="this.style.display='none'">
-      </div>
     </div>
   </section>
 
@@ -95,21 +101,21 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-end justify-between gap-6">
         <div>
-          <h2 class="text-3xl sm:text-4xl font-extrabold">Services & Packages</h2>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-reveal">Services & Packages</h2>
           <p class="mt-2 text-neutral-600">Indicative pricing. Final quote after site survey. Multi‑day discounts available.</p>
         </div>
         <div class="flex gap-2 text-sm">
-          <button data-filter="all" class="filter-btn rounded-lg border px-3 py-2">All</button>
-          <button data-filter="Rental" class="filter-btn rounded-lg border px-3 py-2">Rental</button>
-          <button data-filter="Sales" class="filter-btn rounded-lg border px-3 py-2">Sales</button>
-          <button data-filter="Turnkey" class="filter-btn rounded-lg border px-3 py-2">Turnkey</button>
-          <button data-filter="Support" class="filter-btn rounded-lg border px-3 py-2">Support</button>
+          <button data-filter="all" class="filter-btn rounded-lg border px-3 py-2 hover-scale">All</button>
+          <button data-filter="Rental" class="filter-btn rounded-lg border px-3 py-2 hover-scale">Rental</button>
+          <button data-filter="Sales" class="filter-btn rounded-lg border px-3 py-2 hover-scale">Sales</button>
+          <button data-filter="Turnkey" class="filter-btn rounded-lg border px-3 py-2 hover-scale">Turnkey</button>
+          <button data-filter="Support" class="filter-btn rounded-lg border px-3 py-2 hover-scale">Support</button>
         </div>
       </div>
 
       <div id="servicesGrid" class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
       <div class="mt-8 text-center">
-        <a href="services.html" class="inline-flex items-center rounded-xl border border-brand text-brand px-5 py-3 font-semibold hover:bg-brand hover:text-white">View all services</a>
+        <a href="services.html" class="inline-flex items-center rounded-xl border border-brand text-brand px-5 py-3 font-semibold hover:bg-brand hover:text-white btn-animated">View all services</a>
       </div>
     </div>
   </section>
@@ -117,25 +123,25 @@
   <!-- PRODUCTS -->
   <section id="products" class="py-16 bg-neutral-900 text-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl sm:text-4xl font-extrabold">Featured Products</h2>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-reveal">Featured Products</h2>
       <p class="mt-2 text-neutral-300">LED panels, projectors, mixers, consoles, truss and more — curated for reliability.</p>
-      <div class="mt-8 grid md:grid-cols-3 gap-6">
-        <div class="rounded-2xl border border-neutral-700 p-6 bg-neutral-800 shadow-sm flex flex-col hover:bg-neutral-750 transition-colors duration-300">
-          <h3 class="font-semibold">P2.6 LED Panel</h3>
-          <p class="text-sm text-neutral-400 mt-2">Indoor, high brightness, quick‑lock.</p>
-          <button class="mt-4 inline-flex items-center justify-center rounded-lg border border-brand text-brand px-3 py-2 hover:bg-brand hover:text-white transition-colors duration-300" onclick="openWhatsAppProduct('P2.6 LED Panel')">Request</button>
+              <div class="mt-8 grid md:grid-cols-3 gap-6">
+          <div class="rounded-2xl border border-neutral-700 p-6 bg-neutral-800 shadow-sm flex flex-col hover:bg-neutral-750 transition-colors duration-300 product-card hover-lift">
+            <h3 class="font-semibold">P2.6 LED Panel</h3>
+            <p class="text-sm text-neutral-400 mt-2">Indoor, high brightness, quick‑lock.</p>
+            <button class="mt-4 inline-flex items-center justify-center rounded-lg border border-brand text-brand px-3 py-2 hover:bg-brand hover:text-white transition-colors duration-300 btn-animated" onclick="openWhatsAppProduct('P2.6 LED Panel')">Request</button>
+          </div>
+          <div class="rounded-2xl border border-neutral-700 p-6 bg-neutral-800 shadow-sm flex flex-col hover:bg-neutral-750 transition-colors duration-300 product-card hover-lift">
+            <h3 class="font-semibold">20,000‑lm 4K Laser Projector</h3>
+            <p class="text-sm text-neutral-400 mt-2">Vivid color, long life.</p>
+            <button class="mt-4 inline-flex items-center justify-center rounded-lg border border-brand text-brand px-3 py-2 hover:bg-brand hover:text-white transition-colors duration-300 btn-animated" onclick="openWhatsAppProduct('20,000‑lm 4K Laser Projector')">Request</button>
+          </div>
+          <div class="rounded-2xl border border-neutral-700 p-6 bg-neutral-800 shadow-sm flex flex-col hover:bg-neutral-750 transition-colors duration-300 product-card hover-lift">
+            <h3 class="font-semibold">Digital Audio Console 32‑ch</h3>
+            <p class="text-sm text-neutral-400 mt-2">Tour‑grade reliability.</p>
+            <button class="mt-4 inline-flex items-center justify-center rounded-lg border border-brand text-brand px-3 py-2 hover:bg-brand hover:text-white transition-colors duration-300 btn-animated" onclick="openWhatsAppProduct('Digital Audio Console 32‑ch')">Request</button>
+          </div>
         </div>
-        <div class="rounded-2xl border border-neutral-700 p-6 bg-neutral-800 shadow-sm flex flex-col hover:bg-neutral-750 transition-colors duration-300">
-          <h3 class="font-semibold">20,000‑lm 4K Laser Projector</h3>
-          <p class="text-sm text-neutral-400 mt-2">Vivid color, long life.</p>
-          <button class="mt-4 inline-flex items-center justify-center rounded-lg border border-brand text-brand px-3 py-2 hover:bg-brand hover:text-white transition-colors duration-300" onclick="openWhatsAppProduct('20,000‑lm 4K Laser Projector')">Request</button>
-        </div>
-        <div class="rounded-2xl border border-neutral-700 p-6 bg-neutral-800 shadow-sm flex flex-col hover:bg-neutral-750 transition-colors duration-300">
-          <h3 class="font-semibold">Digital Audio Console 32‑ch</h3>
-          <p class="text-sm text-neutral-400 mt-2">Tour‑grade reliability.</p>
-          <button class="mt-4 inline-flex items-center justify-center rounded-lg border border-brand text-brand px-3 py-2 hover:bg-brand hover:text-white transition-colors duration-300" onclick="openWhatsAppProduct('Digital Audio Console 32‑ch')">Request</button>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -144,11 +150,11 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid lg:grid-cols-2 gap-10 items-start">
         <div>
-          <h2 class="text-3xl sm:text-4xl font-extrabold">Contact</h2>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-reveal">Contact</h2>
           <p class="mt-2 text-neutral-600">Tell us about your venue, dates and audience size. We'll reply fast.</p>
           <div class="mt-6 flex flex-wrap gap-3">
-            <a href="#" onclick="openWhatsApp();return false;" class="inline-flex items-center rounded-xl bg-brand px-5 py-3 text-white font-semibold shadow-soft hover:bg-brand-dark">Chat on WhatsApp</a>
-            <a href="mailto:info@solutionplanetusa.com" class="inline-flex items-center rounded-xl border px-5 py-3 hover:bg-neutral-50">Email us</a>
+            <a href="#" onclick="openWhatsApp();return false;" class="inline-flex items-center rounded-xl bg-brand px-5 py-3 text-white font-semibold shadow-soft hover:bg-brand-dark btn-animated">Chat on WhatsApp</a>
+            <a href="mailto:info@solutionplanetusa.com" class="inline-flex items-center rounded-xl border px-5 py-3 hover:bg-neutral-50 btn-animated">Email us</a>
           </div>
         </div>
         <div class="rounded-2xl border p-6 shadow-sm">
@@ -170,24 +176,24 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
         <!-- Company Info -->
-        <div class="col-span-1">
-          <img src="assets/logo-white.png" alt="Solution Planet" class="h-[15rem] w-auto mb-6">
+        <div class="col-span-1 footer-column">
+          <img src="assets/logo-white.png" alt="Solution Planet" class="h-[15rem] w-auto mb-6 footer-logo">
           <p class="text-neutral-300 text-lg leading-relaxed max-w-md">
             Professional AV solutions for large-scale events. From LED walls to complete production, we bring your vision to life.
           </p>
         </div>
         <!-- Quick Links -->
-        <div class="col-span-1">
+        <div class="col-span-1 footer-column">
           <h3 class="font-semibold text-white mb-3">Quick Links</h3>
           <ul class="space-y-2 text-sm">
-            <li><a href="#top" class="hover:text-white">Home</a></li>
-            <li><a href="services.html" class="hover:text-white">Services</a></li>
-            <li><a href="#products" class="hover:text-white">Products</a></li>
-            <li><a href="#contact" class="hover:text-white">Contact</a></li>
+            <li><a href="#top" class="hover:text-white nav-link-animated">Home</a></li>
+            <li><a href="services.html" class="hover:text-white nav-link-animated">Services</a></li>
+            <li><a href="#products" class="hover:text-white nav-link-animated">Products</a></li>
+            <li><a href="#contact" class="hover:text-white nav-link-animated">Contact</a></li>
           </ul>
         </div>
         <!-- Core Services -->
-        <div class="col-span-1">
+        <div class="col-span-1 footer-column">
           <h3 class="font-semibold text-white mb-3">Core Services</h3>
           <ul class="space-y-2 text-sm">
             <li>LED Walls & Projection</li>
@@ -197,13 +203,13 @@
           </ul>
         </div>
         <!-- Contact -->
-        <div class="col-span-1">
+        <div class="col-span-1 footer-column">
           <h3 class="font-semibold text-white mb-3">Contact</h3>
           <ul class="space-y-2 text-sm">
-            <li>Email: <a href="mailto:info@solutionplanetusa.com" class="hover:text-white">info@solutionplanetusa.com</a></li>
-            <li>WhatsApp: <a href="#" onclick="openWhatsApp();return false;" class="hover:text-white">+1 951 318 5602</a></li>
+            <li>Email: <a href="mailto:info@solutionplanetusa.com" class="hover:text-white nav-link-animated">info@solutionplanetusa.com</a></li>
+            <li>WhatsApp: <a href="#" onclick="openWhatsApp();return false;" class="hover:text-white nav-link-animated">+1 951 318 5602</a></li>
             <li>Address: 11801 Pierce St, Ste 200, Riverside, CA 92505</li>
-            <li>Instagram: <a href="https://instagram.com/solutionplanet_" target="_blank" rel="noopener" class="hover:text-white">@solutionplanet_</a></li>
+            <li>Instagram: <a href="https://instagram.com/solutionplanet_" target="_blank" rel="noopener" class="hover:text-white nav-link-animated">@solutionplanet_</a></li>
             <li>Hours: Mon–Sat 9:00–18:00</li>
           </ul>
         </div>
@@ -213,8 +219,8 @@
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-3">
         <p class="text-sm">© <span id="year"></span> Solution Planet LLC. All rights reserved.</p>
         <div class="flex gap-5 text-sm">
-          <a href="privacy.html" class="hover:text-white">Privacy Policy</a>
-          <a href="terms.html" class="hover:text-white">Terms of Service</a>
+          <a href="privacy.html" class="hover:text-white nav-link-animated">Privacy Policy</a>
+          <a href="terms.html" class="hover:text-white nav-link-animated">Terms of Service</a>
         </div>
       </div>
     </div>
