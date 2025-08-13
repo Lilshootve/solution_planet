@@ -124,6 +124,10 @@ body {
   filter: brightness(0) invert(1); /* Hace la imagen blanca */
   transition: all 0.3s ease;
   pointer-events: none;
+  /* Asegurar que la imagen se vea correctamente */
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
 }
 
 #whatsapp-button a:hover img {
