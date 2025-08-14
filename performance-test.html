@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Test de Rendimiento - Solution Planet</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    .status { padding: 10px; margin: 10px 0; border-radius: 5px; }
+    .success { background: #d4edda; color: #155724; }
+    .warning { background: #fff3cd; color: #856404; }
+    .error { background: #f8d7da; color: #721c24; }
+    button { padding: 10px 20px; margin: 5px; }
+  </style>
+</head>
+<body>
+  <h1>🧪 Test de Rendimiento - Solution Planet</h1>
+  
+  <div id="status"></div>
+  
+  <button onclick="testPerformance()">🚀 Probar Rendimiento</button>
+  <button onclick="checkMemory()">💾 Verificar Memoria</button>
+  <button onclick="clearConsole()">🧹 Limpiar Consola</button>
+  
+  <script>
+    const status = document.getElementById('status');
+    
+    function log(message, type = 'success') {
+      const div = document.createElement('div');
+      div.className = `status ${type}`;
+      div.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
+      status.appendChild(div);
+      console.log(message);
+    }
+    
+    function testPerformance() {
+      log('🚀 Iniciando test de rendimiento...');
+      
+      // Test de carga de página
+      const startTime = performance.now();
+      
+      // Simular carga
+      setTimeout(() => {
+        const loadTime = performance.now() - startTime;
+        log(`✅ Tiempo de carga simulado: ${loadTime.toFixed(2)}ms`, 'success');
+        
+        // Test de memoria
+        if (performance.memory) {
+          const memory = performance.memory;
+          log(`💾 Memoria usada: ${(memory.usedJSHeapSize / 1024 / 1024).toFixed(2)}MB`, 'success');
+          log(`💾 Memoria total: ${(memory.totalJSHeapSize / 1024 / 1024).toFixed(2)}MB`, 'success');
+        }
+        
+        // Test de FPS
+        testFPS();
+      }, 100);
+    }
+    
+    function testFPS() {
+      log('🎬 Probando FPS...');
+      let frames = 0;
+      let lastTime = performance.now();
+      
+      function countFrames() {
+        frames++;
+        const currentTime = performance.now();
+        
+        if (currentTime - lastTime >= 1000) {
+          const fps = Math.round((frames * 1000) / (currentTime - lastTime));
+          log(`🎬 FPS estimado: ${fps}`, fps > 30 ? 'success' : 'warning');
+          frames = 0;
+          lastTime = currentTime;
+        }
+        
+        if (frames < 1000) {
+          requestAnimationFrame(countFrames);
+        }
+      }
+      
+      requestAnimationFrame(countFrames);
+    }
+    
+    function checkMemory() {
+      if (performance.memory) {
+        const memory = performance.memory;
+        log(`💾 Memoria usada: ${(memory.usedJSHeapSize / 1024 / 1024).toFixed(2)}MB`, 'success');
+        log(`💾 Memoria total: ${(memory.totalJSHeapSize / 1024 / 1024).toFixed(2)}MB`, 'success');
+        log(`💾 Límite de memoria: ${(memory.jsHeapSizeLimit / 1024 / 1024).toFixed(2)}MB`, 'success');
+      } else {
+        log('⚠️ API de memoria no disponible en este navegador', 'warning');
+      }
+    }
+    
+    function clearConsole() {
+      status.innerHTML = '';
+      console.clear();
+      log('🧹 Consola limpiada', 'success');
+    }
+    
+    // Test automático al cargar
+    window.addEventListener('load', () => {
+      log('📄 Página cargada correctamente', 'success');
+      log('🔍 Verificando sistema de partículas...', 'success');
+      
+      if (window.particleEffects) {
+        const status = window.particleEffects.getStatus();
+        log(`✅ ParticleEffects: ${JSON.stringify(status)}`, 'success');
+      } else {
+        log('⚠️ ParticleEffects no encontrado', 'warning');
+      }
+    });
+  </script>
+</body>
+</html>
