@@ -53,10 +53,21 @@
       transform: scale(0.98) translateY(0);
     }
     
-    /* En móvil, mantener el efecto neón siempre visible */
+    /* En móvil, mantener el efecto neón siempre visible y agregar márgenes */
     @media (max-width: 768px) {
       .btn-request {
         box-shadow: 0 0 25px rgba(0, 184, 217, 0.7);
+      }
+      
+      /* Agregar márgenes para evitar que se mueva hacia los lados */
+      .container, section {
+        margin-left: 16px;
+        margin-right: 16px;
+      }
+      
+      .max-w-7xl {
+        margin-left: 16px;
+        margin-right: 16px;
       }
     }
   </style>
