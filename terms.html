@@ -11,11 +11,18 @@
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   
-  <!-- Custom Effects CSS -->
-  <link rel="stylesheet" href="assets/custom-effects.css">
-  
-  <!-- Particle Effects System -->
-  <script src="assets/particle-effects.js"></script>
+  <!-- Estilos optimizados para rendimiento -->
+  <style>
+    html{scroll-behavior:smooth}
+    
+    /* Solo estilos mínimos para enlaces */
+    a { transition: all 0.2s ease; }
+    a:hover { transform: translateY(-1px); }
+    
+    /* Estilos para botones si los hay */
+    button { transition: all 0.2s ease; }
+    button:hover { transform: translateY(-1px); }
+  </style>
   
   <script>
     tailwind.config = { theme: { extend: { colors: { brand: { DEFAULT: '#00B8D9', dark: '#0096B3' }, carbon: '#0A0A0A' }, fontFamily: { sans: ['Montserrat','ui-sans-serif','system-ui'], display: ['Cormorant Garamond','serif'] }, boxShadow: { soft: '0 10px 30px rgba(0,0,0,.12)' } } } };
