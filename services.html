@@ -32,14 +32,16 @@
     #whatsapp-button a { transition: all 0.3s ease; }
     #whatsapp-button a:hover { transform: scale(1.05); }
     
-    /* EFECTO NEÓN para todos los botones */
+    /* EFECTO NEÓN para todos los botones con bordes CURVOS */
     .btn-request {
-      @apply inline-flex items-center justify-center rounded-lg px-3 py-2;
+      @apply inline-flex items-center justify-center px-3 py-2;
       background: #00B8D9;
       color: white;
       border: none;
+      border-radius: 25px;
       transition: all 0.3s ease;
       box-shadow: 0 0 20px rgba(0, 184, 217, 0.5);
+      text-decoration: none;
     }
     
     .btn-request:hover {
