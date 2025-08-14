@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>🧪 Test de Botones SIMPLE - Solution Planet</title>
+  
+  <style>
+    /* Reset básico */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      color: #333;
+      line-height: 1.6;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    }
+    
+    h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      color: #333;
+    }
+    
+    .subtitle {
+      text-align: center;
+      font-size: 1.2rem;
+      color: #666;
+      margin-bottom: 40px;
+    }
+    
+    .test-section {
+      margin-bottom: 40px;
+      padding: 25px;
+      border: 2px solid #e0e0e0;
+      border-radius: 15px;
+      background: white;
+    }
+    
+    .test-section h3 {
+      font-size: 1.4rem;
+      margin-bottom: 15px;
+      color: #333;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .test-section p {
+      color: #666;
+      margin-bottom: 20px;
+      font-size: 1rem;
+    }
+    
+    .button-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+    }
+    
+    /* Estilos base para todos los botones */
+    .btn-base {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 24px;
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: 8px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      min-height: 48px;
+      border: none;
+      outline: none;
+      width: 100%;
+    }
+    
+    /* OPCIÓN 1: Clásico con borde */
+    .btn-option-1 {
+      background: white;
+      color: #00B8D9;
+      border: 2px solid #00B8D9;
+    }
+    .btn-option-1:hover {
+      background: #00B8D9;
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0, 184, 217, 0.3);
+    }
+    
+    /* OPCIÓN 2: Gradiente con sombra */
+    .btn-option-2 {
+      background: linear-gradient(135deg, #00B8D9, #0096B3);
+      color: white;
+      box-shadow: 0 4px 15px rgba(0, 184, 217, 0.4);
+    }
+    .btn-option-2:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0, 184, 217, 0.6);
+    }
+    
+    /* OPCIÓN 3: Glassmorphism */
+    .btn-option-3 {
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+    }
+    .btn-option-3:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
+    }
+    
+    /* OPCIÓN 4: Borde animado */
+    .btn-option-4 {
+      background: white;
+      color: #00B8D9;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-option-4::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border: 2px solid #00B8D9;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+    .btn-option-4:hover::before {
+      border-color: #0096B3;
+      transform: scale(1.05);
+    }
+    .btn-option-4:hover {
+      color: #0096B3;
+      transform: translateY(-3px);
+    }
+    
+    /* OPCIÓN 5: Efecto neón */
+    .btn-option-5 {
+      background: #00B8D9;
+      color: white;
+      box-shadow: 0 0 20px rgba(0, 184, 217, 0.5);
+    }
+    .btn-option-5:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 30px rgba(0, 184, 217, 0.8), 0 8px 25px rgba(0, 184, 217, 0.3);
+    }
+    
+    /* OPCIÓN 6: Efecto 3D */
+    .btn-option-6 {
+      background: #00B8D9;
+      color: white;
+      box-shadow: 0 6px 0 #0096B3;
+      transform: translateY(0);
+    }
+    .btn-option-6:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 0 #0096B3;
+    }
+    .btn-option-6:active {
+      transform: translateY(2px);
+      box-shadow: 0 2px 0 #0096B3;
+    }
+    
+    /* OPCIÓN 7: Expansión de color */
+    .btn-option-7 {
+      background: white;
+      color: #00B8D9;
+      border: 2px solid #00B8D9;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-option-7::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 100%;
+      background: #00B8D9;
+      transition: width 0.3s ease;
+      z-index: -1;
+    }
+    .btn-option-7:hover::before {
+      width: 100%;
+    }
+    .btn-option-7:hover {
+      color: white;
+      transform: translateY(-3px);
+    }
+    
+    /* OPCIÓN 8: Rotación sutil */
+    .btn-option-8 {
+      background: #00B8D9;
+      color: white;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .btn-option-8:hover {
+      transform: translateY(-3px) rotate(2deg);
+      box-shadow: 0 8px 25px rgba(0, 184, 217, 0.4);
+    }
+    
+    /* Efectos de click para todas las opciones */
+    .btn-option-1:active, .btn-option-2:active, .btn-option-3:active,
+    .btn-option-4:active, .btn-option-5:active, .btn-option-6:active,
+    .btn-option-7:active, .btn-option-8:active {
+      transform: scale(0.98) translateY(0);
+    }
+    
+    /* Estilos especiales para las secciones */
+    .glass-section {
+      background: linear-gradient(135deg, #1e3a8a, #7c3aed);
+      color: white;
+    }
+    
+    .dark-section {
+      background: #1f2937;
+      color: white;
+    }
+    
+    /* Información y botones de regreso */
+    .info-box {
+      background: #dbeafe;
+      border: 1px solid #93c5fd;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 20px 0;
+    }
+    
+    .info-box h3 {
+      color: #1e40af;
+      margin-bottom: 15px;
+    }
+    
+    .info-box ul, .info-box ol {
+      color: #1e40af;
+      padding-left: 20px;
+    }
+    
+    .info-box li {
+      margin-bottom: 8px;
+    }
+    
+    .back-button {
+      display: inline-block;
+      background: #374151;
+      color: white;
+      padding: 15px 30px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      margin-top: 30px;
+    }
+    
+    .back-button:hover {
+      background: #4b5563;
+      transform: translateY(-2px);
+    }
+    
+    .center {
+      text-align: center;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container {
+        padding: 20px;
+        margin: 10px;
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
+      
+      .button-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      /* En móvil, mostrar siempre el estado hover */
+      .btn-option-1 {
+        background: #00B8D9;
+        color: white;
+        border-color: #0096B3;
+      }
+      
+      .btn-option-2 {
+        background: linear-gradient(135deg, #0096B3, #00B8D9);
+      }
+      
+      .btn-option-3 {
+        background: rgba(255, 255, 255, 0.3);
+      }
+      
+      .btn-option-4 {
+        color: #0096B3;
+      }
+      
+      .btn-option-4::before {
+        border-color: #0096B3;
+        transform: scale(1.02);
+      }
+      
+      .btn-option-5 {
+        box-shadow: 0 0 25px rgba(0, 184, 217, 0.7);
+      }
+      
+      .btn-option-6 {
+        box-shadow: 0 4px 0 #0096B3;
+      }
+      
+      .btn-option-7 {
+        color: white;
+      }
+      
+      .btn-option-7::before {
+        width: 100%;
+      }
+      
+      .btn-option-8 {
+        transform: rotate(1deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🧪 Test de Botones SIMPLE</h1>
+      <p class="subtitle">Elige el estilo que más te guste para tus botones "Request" y "View all services"</p>
+    </header>
+
+    <!-- OPCIÓN 1: Clásico con borde -->
+    <div class="test-section">
+      <h3>🎯 Opción 1: Clásico con Borde</h3>
+      <p>Borde azul, texto azul, hover con fondo azul y elevación</p>
+      <div class="button-grid">
+        <button class="btn-base btn-option-1">Request</button>
+        <button class="btn-base btn-option-1">View All Services</button>
+        <button class="btn-base btn-option-1">Contact Us</button>
+      </div>
+    </div>
+
+    <!-- OPCIÓN 2: Gradiente con sombra -->
+    <div class="test-section">
+      <h3>🌈 Opción 2: Gradiente con Sombra</h3>
+      <p>Fondo degradado azul, sombra azul, hover con elevación</p>
+      <div class="button-grid">
+        <button class="btn-base btn-option-2">Request</button>
+        <button class="btn-base btn-option-2">View All Services</button>
+        <button class="btn-base btn-option-2">Contact Us</button>
+      </div>
+    </div>
+
+    <!-- OPCIÓN 3: Glassmorphism -->
+    <div class="test-section glass-section">
+      <h3>💎 Opción 3: Glassmorphism</h3>
+      <p>Efecto de cristal, fondo transparente, hover con brillo</p>
+      <div class="button-grid">
+        <button class="btn-base btn-option-3">Request</button>
+        <button class="btn-base btn-option-3">View All Services</button>
+        <button class="btn-base btn-option-3">Contact Us</button>
+      </div>
+    </div>
+
+    <!-- OPCIÓN 4: Borde animado -->
+    <div class="test-section">
+      <h3>✨ Opción 4: Borde Animado</h3>
+      <p>Borde que se expande, texto azul, hover con borde más oscuro</p>
+      <div class="button-grid">
+        <button class="btn-base btn-option-4">Request</button>
+        <button class="btn-base btn-option-4">View All Services</button>
+        <button class="btn-base btn-option-4">Contact Us</button>
+      </div>
+    </div>
+
+    <!-- OPCIÓN 5: Efecto neón -->
+    <div class="test-section dark-section">
+      <h3>🌟 Opción 5: Efecto Neón</h3>
+      <p>Fondo azul con brillo neón, hover con más brillo</p>
+      <div class="button-grid">
+        <button class="btn-base btn-option-5">Request</button>
+        <button class="btn-base btn-option-5">View All Services</button>
+        <button class="btn-base btn-option-5">Contact Us</button>
+      </div>
+    </div>
+
+    <!-- OPCIÓN 6: Efecto 3D -->
+    <div class="test-section">
+      <h3>🎲 Opción 6: Efecto 3D</h3>
+      <p>Botón con profundidad, sombra 3D, hover con elevación</p>
+      <div class="button-grid">
+        <button class="btn-base btn-option-6">Request</button>
+        <button class="btn-base btn-option-6">View All Services</button>
+        <button class="btn-base btn-option-6">Contact Us</button>
+      </div>
+    </div>
+
+    <!-- OPCIÓN 7: Expansión de color -->
+    <div class="test-section">
+      <h3>🎨 Opción 7: Expansión de Color</h3>
+      <p>Color que se expande de izquierda a derecha, hover con relleno</p>
+      <div class="button-grid">
+        <button class="btn-base btn-option-7">Request</button>
+        <button class="btn-base btn-option-7">View All Services</button>
+        <button class="btn-base btn-option-7">Contact Us</button>
+      </div>
+    </div>
+
+    <!-- OPCIÓN 8: Rotación sutil -->
+    <div class="test-section">
+      <h3>🔄 Opción 8: Rotación Sutil</h3>
+      <p>Rotación ligera en hover, fondo azul, efecto suave</p>
+      <div class="button-grid">
+        <button class="btn-base btn-option-8">Request</button>
+        <button class="btn-base btn-option-8">View All Services</button>
+        <button class="btn-base btn-option-8">Contact Us</button>
+      </div>
+    </div>
+
+    <!-- Información adicional -->
+    <div class="info-box">
+      <h3>💡 Información Importante</h3>
+      <ul>
+        <li><strong>En PC:</strong> Todos los efectos de hover funcionan perfectamente</li>
+        <li><strong>En móvil:</strong> Los botones muestran automáticamente el estado "hover" para mejor visibilidad</li>
+        <li><strong>Accesibilidad:</strong> Todos los botones tienen contraste adecuado y efectos de click</li>
+        <li><strong>Rendimiento:</strong> Solo CSS puro, sin dependencias externas</li>
+      </ul>
+    </div>
+
+    <!-- Instrucciones -->
+    <div class="info-box">
+      <h3>🚀 Cómo Elegir</h3>
+      <ol>
+        <li><strong>Prueba cada opción</strong> en PC y móvil</li>
+        <li><strong>Considera tu público objetivo</strong> (profesional vs. creativo)</li>
+        <li><strong>Evalúa la legibilidad</strong> en diferentes dispositivos</li>
+        <li><strong>Dime tu favorita</strong> y la implemento en tu web</li>
+      </ol>
+    </div>
+
+    <!-- Botón de regreso -->
+    <div class="center">
+      <a href="index.html" class="back-button">← Volver a la Web Principal</a>
+    </div>
+  </div>
+
+  <script>
+    // Agregar efectos de click a todos los botones
+    document.querySelectorAll('button').forEach(button => {
+      button.addEventListener('click', function() {
+        // Efecto de click
+        this.style.transform = 'scale(0.95)';
+        setTimeout(() => {
+          this.style.transform = '';
+        }, 150);
+        
+        // Mostrar mensaje
+        const buttonText = this.textContent;
+        alert(`¡Botón "${buttonText}" clickeado! Esta es la opción que estás probando.`);
+      });
+    });
+
+    // Agregar información de hover en móvil
+    if (window.innerWidth <= 768) {
+      const infoDiv = document.createElement('div');
+      infoDiv.style.cssText = `
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        background: #2563eb;
+        color: white;
+        padding: 10px 15px;
+        border-radius: 8px;
+        font-size: 14px;
+        z-index: 1000;
+        box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+      `;
+      infoDiv.innerHTML = '📱 Modo móvil: Los botones muestran el estado hover automáticamente';
+      document.body.appendChild(infoDiv);
+      
+      setTimeout(() => {
+        infoDiv.remove();
+      }, 5000);
+    }
+  </script>
+</body>
+</html>
