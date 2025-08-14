@@ -32,27 +32,29 @@
     #whatsapp-button a { transition: all 0.3s ease; }
     #whatsapp-button a:hover { transform: scale(1.05); }
     
-    /* Estilos específicos para botones en móvil */
+    /* EFECTO NEÓN para todos los botones */
     .btn-request {
-      @apply inline-flex items-center justify-center rounded-lg border border-brand text-brand px-3 py-2;
-      transition: all 0.2s ease;
+      @apply inline-flex items-center justify-center rounded-lg px-3 py-2;
+      background: #00B8D9;
+      color: white;
+      border: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 20px rgba(0, 184, 217, 0.5);
     }
     
     .btn-request:hover {
-      @apply bg-brand text-white;
-      transform: translateY(-1px);
+      transform: translateY(-3px);
+      box-shadow: 0 0 30px rgba(0, 184, 217, 0.8), 0 8px 25px rgba(0, 184, 217, 0.3);
     }
     
-    /* En móvil, mostrar siempre el estado hover */
+    .btn-request:active {
+      transform: scale(0.98) translateY(0);
+    }
+    
+    /* En móvil, mantener el efecto neón siempre visible */
     @media (max-width: 768px) {
       .btn-request {
-        @apply bg-brand text-white;
-        border-color: #0096B3;
-      }
-      
-      .btn-request:active {
-        transform: scale(0.98);
-        background-color: #0096B3;
+        box-shadow: 0 0 25px rgba(0, 184, 217, 0.7);
       }
     }
   </style>
