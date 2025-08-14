@@ -14,9 +14,6 @@
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   
-  <!-- Custom Effects CSS -->
-  <link rel="stylesheet" href="assets/custom-effects.css">
-  
   <script>
     tailwind.config = {
       theme: {
@@ -28,10 +25,15 @@
       }
     }
   </script>
-  <style>html{scroll-behavior:smooth} .glass{backdrop-filter:blur(6px);background:rgba(255,255,255,.06)}</style>
-  
-  <!-- Particle Effects System (Ultra Optimizado) -->
-  <script src="assets/particle-effects.js"></script>
+  <style>
+    html{scroll-behavior:smooth}
+    .glass{backdrop-filter:blur(6px);background:rgba(255,255,255,.06)}
+    /* Solo estilos mínimos */
+    button, a { transition: all 0.2s ease; }
+    button:hover, a:hover { transform: translateY(-1px); }
+    #whatsapp-button a { transition: all 0.3s ease; }
+    #whatsapp-button a:hover { transform: scale(1.05); }
+  </style>
   
   <!-- Favicons -->
   <link rel="icon" type="image/png" href="/assets/favicon-96x96.png" sizes="96x96" />
@@ -47,7 +49,6 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-36 flex items-center justify-between">
       <a href="#top" class="flex items-center gap-3">
         <img src="assets/logo.png" alt="Solution Planet logo" class="h-[13.5rem] w-auto" onerror="this.src='https://dummyimage.com/540x180/ffffff/000000&text=LOGO'">
-        <!-- brand text removed -->
       </a>
       <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
         <a href="services.html" class="hover:text-brand">Services</a>
@@ -222,7 +223,6 @@
 
   <!-- Floating WhatsApp Button -->
   <div id="whatsapp-button" class="fixed bottom-6 right-6 z-50">
-    <!-- Botón principal con diseño mejorado -->
     <a href="#" 
        onclick="openWhatsApp(); return false;" 
        class="group relative inline-flex items-center justify-center w-16 h-16 rounded-full bg-brand text-white shadow-2xl hover:bg-brand-dark transition-all duration-300 ease-out transform hover:scale-110 hover:rotate-2"
@@ -230,9 +230,6 @@
       
       <!-- Icono de WhatsApp -->
       <img src="assets/whatsapp.png" alt="WhatsApp" class="w-8 h-8">
-      
-      <!-- Efecto de pulso sutil -->
-      <div class="absolute inset-0 rounded-full bg-brand/30 animate-ping"></div>
       
       <!-- Indicador de estado online -->
       <div class="absolute -top-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white shadow-lg">

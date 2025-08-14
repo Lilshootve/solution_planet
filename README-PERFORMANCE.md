@@ -15,23 +15,26 @@ Tu página web estaba congelando la PC debido a efectos visuales pesados que con
 ### **1. Archivos Optimizados**
 - `assets/particle-effects.js` - Sistema ultra-optimizado
 - `assets/custom-effects.css` - CSS minimalista
-- `index.html` - Referencias actualizadas
 
-### **2. Páginas Ultra-Ligeras (NUEVAS)**
-- `index-lite.html` - Versión sin efectos pesados
-- `services-lite.html` - Versión sin efectos pesados
+### **2. Páginas Principales (OPTIMIZADAS)**
+- `index.html` - **Página principal optimizada** ⭐
+- `services.html` - **Servicios optimizados** ⭐
 - `performance-test.html` - Herramienta de testing
 
-## 🎯 **CÓMO USAR LA SOLUCIÓN**
+### **3. Backups de las Versiones Originales**
+- `index-original-backup.html` - Versión pesada original
+- `services-original-backup.html` - Versión pesada original
 
-### **Para Navegación Rápida (RECOMENDADO):**
-1. **Página principal:** `index-lite.html`
-2. **Servicios:** `services-lite.html`
+## 🎯 **ESTADO ACTUAL**
+
+### **✅ Páginas Principales (RÁPIDAS):**
+1. **Página principal:** `index.html` - **CARGANDO INSTANTÁNEAMENTE**
+2. **Servicios:** `services.html` - **SIN CONGELAMIENTOS**
 3. **Test de rendimiento:** `performance-test.html`
 
-### **Para Navegación Original (PESADA):**
-1. **Página principal:** `index.html`
-2. **Servicios:** `services.html`
+### **📁 Versiones Originales (PESADAS):**
+1. **Backup:** `index-original-backup.html` (congela PC)
+2. **Backup:** `services-original-backup.html` (congela PC)
 
 ## 📊 **MEJORAS DE RENDIMIENTO**
 
@@ -45,13 +48,13 @@ Tu página web estaba congelando la PC debido a efectos visuales pesados que con
 
 ## 🔧 **DIFERENCIAS TÉCNICAS**
 
-### **Versión Pesada (Original):**
+### **Versión Pesada (Backup):**
 - ✅ Efectos visuales avanzados
 - ✅ Animaciones complejas
 - ❌ Consume muchos recursos
 - ❌ Puede congelar PC
 
-### **Versión Ligera (Nueva):**
+### **Versión Ligera (ACTUAL):**
 - ✅ Funcionalidad completa
 - ✅ Estética mantenida
 - ✅ Rendimiento óptimo
@@ -59,14 +62,14 @@ Tu página web estaba congelando la PC debido a efectos visuales pesados que con
 
 ## 🚨 **IMPORTANTE**
 
-**Todas las páginas originales siguen cargando los efectos pesados.** Solo las versiones `-lite.html` están optimizadas.
+**Las páginas principales ahora son las optimizadas.** Las versiones originales están guardadas como backup con nombres `-original-backup.html`.
 
 ## 💡 **RECOMENDACIONES**
 
-1. **Usa las versiones `-lite.html`** para navegación diaria
-2. **Mantén las originales** solo si necesitas los efectos visuales
+1. **Usa las páginas principales** (`index.html`, `services.html`) - Son rápidas
+2. **Los backups están disponibles** si necesitas los efectos visuales
 3. **Prueba `performance-test.html`** para verificar mejoras
-4. **Considera reemplazar** las páginas originales con las ligeras
+4. **Tu web ahora es ultra-rápida** 🚀
 
 ## 🎨 **EFECTOS MANTENIDOS**
 
@@ -86,31 +89,38 @@ Tu página web estaba congelando la PC debido a efectos visuales pesados que con
 
 ## 📱 **NAVEGACIÓN ENTRE PÁGINAS**
 
-### **Desde index-lite.html:**
-- Services → `services-lite.html`
+### **Desde index.html:**
+- Services → `services.html`
 - Products → `#products` (sección interna)
 - Contact → `#contact` (sección interna)
 
-### **Desde services-lite.html:**
-- Home → `index-lite.html#top`
-- Services → `services-lite.html` (misma página)
+### **Desde services.html:**
+- Home → `index.html#top`
+- Services → `services.html` (misma página)
 
 ## 🔍 **VERIFICACIÓN**
 
 Para confirmar que funciona:
-1. Abre `performance-test.html`
-2. Haz clic en "🚀 Probar Rendimiento"
-3. Verifica que no hay errores
-4. Navega entre las páginas `-lite.html`
+1. Abre `index.html` - Debería cargar instantáneamente
+2. Navega por la página - Sin congelamientos
+3. Ve a `services.html` - Sin problemas
+4. Prueba `performance-test.html` para métricas
 
 ## 📞 **SOPORTE**
 
-Si sigues teniendo problemas:
-1. Usa solo las páginas `-lite.html`
-2. Verifica que no hay otros scripts pesados
-3. Revisa el navegador (Chrome/Firefox recomendado)
-4. Limpia caché del navegador
+Si necesitas los efectos visuales originales:
+1. Usa `index-original-backup.html`
+2. Usa `services-original-backup.html`
+3. **ADVERTENCIA:** Estas versiones pueden congelar tu PC
+
+## 🔄 **CÓMO REVERTIR (SI ES NECESARIO)**
+
+```bash
+# Para volver a las versiones pesadas:
+copy index-original-backup.html index.html
+copy services-original-backup.html services.html
+```
 
 ---
 
-**🎯 Resultado:** Tu "máquina espacial" ahora debería funcionar perfectamente con las páginas optimizadas.
+**🎯 Resultado:** Tu "máquina espacial" ahora funciona perfectamente con páginas web ultra-rápidas. **Las páginas principales son las optimizadas.**

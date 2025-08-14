@@ -14,6 +14,9 @@
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   
+  <!-- Custom Effects CSS -->
+  <link rel="stylesheet" href="assets/custom-effects.css">
+  
   <script>
     tailwind.config = {
       theme: {
@@ -25,15 +28,10 @@
       }
     }
   </script>
-  <style>
-    html{scroll-behavior:smooth}
-    .glass{backdrop-filter:blur(6px);background:rgba(255,255,255,.06)}
-    /* Solo estilos mínimos */
-    button, a { transition: all 0.2s ease; }
-    button:hover, a:hover { transform: translateY(-1px); }
-    #whatsapp-button a { transition: all 0.3s ease; }
-    #whatsapp-button a:hover { transform: scale(1.05); }
-  </style>
+  <style>html{scroll-behavior:smooth} .glass{backdrop-filter:blur(6px);background:rgba(255,255,255,.06)}</style>
+  
+  <!-- Particle Effects System (Ultra Optimizado) -->
+  <script src="assets/particle-effects.js"></script>
   
   <!-- Favicons -->
   <link rel="icon" type="image/png" href="/assets/favicon-96x96.png" sizes="96x96" />
@@ -49,9 +47,10 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-36 flex items-center justify-between">
       <a href="#top" class="flex items-center gap-3">
         <img src="assets/logo.png" alt="Solution Planet logo" class="h-[13.5rem] w-auto" onerror="this.src='https://dummyimage.com/540x180/ffffff/000000&text=LOGO'">
+        <!-- brand text removed -->
       </a>
       <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
-        <a href="services-lite.html" class="hover:text-brand">Services</a>
+        <a href="services.html" class="hover:text-brand">Services</a>
         <a href="#products" class="hover:text-brand">Products</a>
         <a href="#contact" class="hover:text-brand">Contact</a>
       </nav>
@@ -75,7 +74,7 @@
         <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight">Large‑Scale AV Solutions for Conventions, Auditoriums & Exhibition Stands</h1>
         <p class="mt-5 text-neutral-300 text-lg">We sell, rent, install and support LED walls, pro audio, projection, lighting and staging — end‑to‑end.</p>
         <div class="mt-8 flex flex-wrap gap-3">
-          <a href="services-lite.html" class="inline-flex items-center rounded-xl border border-white/20 px-5 py-3 hover:bg-white/10 transition-colors duration-300">View Services</a>
+          <a href="services.html" class="inline-flex items-center rounded-xl border border-white/20 px-5 py-3 hover:bg-white/10 transition-colors duration-300">View Services</a>
           <a href="#contact" class="inline-flex items-center rounded-xl bg-brand px-5 py-3 text-white font-semibold shadow-soft hover:bg-brand-dark transition-colors duration-300">Contact</a>
         </div>
         <div class="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm text-neutral-300">
@@ -110,7 +109,7 @@
 
       <div id="servicesGrid" class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
       <div class="mt-8 text-center">
-        <a href="services-lite.html" class="inline-flex items-center rounded-xl border border-brand text-brand px-5 py-3 font-semibold hover:bg-brand hover:text-white">View all services</a>
+        <a href="services.html" class="inline-flex items-center rounded-xl border border-brand text-brand px-5 py-3 font-semibold hover:bg-brand hover:text-white">View all services</a>
       </div>
     </div>
   </section>
@@ -182,7 +181,7 @@
           <h3 class="font-semibold text-white mb-3">Quick Links</h3>
           <ul class="space-y-2 text-sm">
             <li><a href="#top" class="hover:text-white">Home</a></li>
-            <li><a href="services-lite.html" class="hover:text-white">Services</a></li>
+            <li><a href="services.html" class="hover:text-white">Services</a></li>
             <li><a href="#products" class="hover:text-white">Products</a></li>
             <li><a href="#contact" class="hover:text-white">Contact</a></li>
           </ul>
@@ -223,6 +222,7 @@
 
   <!-- Floating WhatsApp Button -->
   <div id="whatsapp-button" class="fixed bottom-6 right-6 z-50">
+    <!-- Botón principal con diseño mejorado -->
     <a href="#" 
        onclick="openWhatsApp(); return false;" 
        class="group relative inline-flex items-center justify-center w-16 h-16 rounded-full bg-brand text-white shadow-2xl hover:bg-brand-dark transition-all duration-300 ease-out transform hover:scale-110 hover:rotate-2"
@@ -230,6 +230,9 @@
       
       <!-- Icono de WhatsApp -->
       <img src="assets/whatsapp.png" alt="WhatsApp" class="w-8 h-8">
+      
+      <!-- Efecto de pulso sutil -->
+      <div class="absolute inset-0 rounded-full bg-brand/30 animate-ping"></div>
       
       <!-- Indicador de estado online -->
       <div class="absolute -top-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white shadow-lg">
