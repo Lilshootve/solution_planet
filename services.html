@@ -103,7 +103,6 @@
              <div class="mt-6 flex flex-wrap gap-2 text-sm">
          <button data-filter="all" class="filter-btn rounded-lg border px-3 py-2 bg-white/10">All</button>
          <button data-filter="Rental" class="filter-btn rounded-lg border px-3 py-2">Rental</button>
-         <button data-filter="Sales" class="filter-btn rounded-lg border px-3 py-2">Sales</button>
          <button data-filter="Turnkey" class="filter-btn rounded-lg border px-3 py-2">Turnkey</button>
          <button data-filter="Support" class="filter-btn rounded-lg border px-3 py-2">Support</button>
        </div>
@@ -229,43 +228,41 @@
     });
 
     const services = [
-      { name: 'LED wall rental 3×2 m (P2.6)', price: 3200, type: 'Rental' },
-      { name: 'LED wall installation & calibration', price: 1500, type: 'Support' },
-      { name: '20,000‑lumen 4K laser projector', price: 2500, type: 'Rental' },
-      { name: 'Projection mapping package (small venue)', price: 12000, type: 'Turnkey' },
-      { name: 'Line‑array sound system + FOH engineer', price: 2800, type: 'Rental' },
+      // RENTAL – Alquiler de Equipos
+      { name: 'Pantalla LED 3×2 m (P2.6)', price: 2800, type: 'Rental' },
+      { name: 'Proyector láser 20,000 lúmenes 4K', price: 1800, type: 'Rental' },
+      { name: 'Sound system line-array básico', price: 1500, type: 'Rental' },
+      { name: 'Micrófonos inalámbricos (x2)', price: 150, type: 'Rental' },
+      { name: 'Monitores / Confidence displays', price: 300, type: 'Rental' },
 
-      { name: 'Broadcast multicam package (6× 4K cameras + director + comms)', price: 38000, type: 'Turnkey' },
-      { name: 'Premium lighting show (24 moving heads + timecode programming)', price: 16500, type: 'Turnkey' },
-      { name: 'Large‑venue line‑array (24 tops + 12 subs) + FOH/monitor engineers', price: 22000, type: 'Turnkey' },
-      { name: 'Rigging package: 24m truss + 12 chain motors + safety', price: 19500, type: 'Turnkey' },
+      // SUPPORT – Soporte Técnico
+      { name: 'Instalación & calibración LED wall', price: 1200, type: 'Support' },
+      { name: 'Técnico AV on-site', price: 900, type: 'Support' },
+      { name: 'Show caller / Stage manager', price: 700, type: 'Support' },
+      { name: 'Distribución eléctrica + UPS', price: 800, type: 'Support' },
+      { name: 'Pre-event site survey + CAD layout', price: 400, type: 'Support' },
+      { name: 'Transporte y load-in (metro)', price: 500, type: 'Support' },
+      { name: 'Post-event highlight reel (edición)', price: 900, type: 'Support' },
 
-      { name: 'Modular stage 8×6 m + skirting', price: 6500, type: 'Turnkey' },
-      { name: 'Power distribution + UPS pack', price: 1200, type: 'Support' },
-
-      { name: 'Enterprise 4K switching & recording rack (12 inputs, multiview, tech)', price: 14500, type: 'Turnkey' },
-      { name: 'IMAG + broadcast mix (4 cameras, long‑throw lenses, tally)', price: 19000, type: 'Turnkey' },
-      { name: 'Global livestream with redundancy (dual encoders, CDN, graphics)', price: 18000, type: 'Turnkey' },
-
-      { name: 'On‑site technician (per tech, per day)', price: 900, type: 'Support' },
-      { name: 'Show caller / stage manager', price: 800, type: 'Support' },
-      { name: 'Pre‑event site survey & CAD layout', price: 450, type: 'Support' },
-      { name: 'Transport & load‑in (metro area)', price: 600, type: 'Support' },
-
-      { name: 'Custom curved LED wall build (purchase)', price: 45000, type: 'Sales' },
-      { name: 'Full auditorium production (≈1,000 attendees)', price: 85000, type: 'Turnkey' },
-
-      { name: 'Immersive expo booth AV (9×6 m curved LED + audio + lighting)', price: 65000, type: 'Turnkey' },
-      { name: 'Expo booth AV Pack M (6×3 m)', price: 6500, type: 'Turnkey' },
-      { name: 'Expo booth AV Pack L (custom modular)', price: 18000, type: 'Turnkey' },
-      { name: 'Simultaneous interpretation IR (100 headsets)', price: 6200, type: 'Turnkey' },
-      { name: 'Conference delegate mic system (20 + chair)', price: 5800, type: 'Turnkey' },
-
-      { name: 'Digital signage network (25 displays + players + CMS onboarding)', price: 38000, type: 'Turnkey' },
-      { name: 'Interactive LED floor 8×6 m + motion sensors', price: 24000, type: 'Turnkey' },
-      { name: 'Holographic display tower', price: 12000, type: 'Turnkey' },
-      { name: '360° photo/video booth + operator', price: 3200, type: 'Turnkey' },
-      { name: 'Post‑event highlight reel (1–2 min edit)', price: 1200, type: 'Support' }
+      // TURNKEY – Producción Integral
+      { name: 'Proyección mapping (pequeño recinto)', price: 9000, type: 'Turnkey' },
+      { name: 'Broadcast multicam profesional', price: 30000, type: 'Turnkey' },
+      { name: 'Premium lighting show', price: 12000, type: 'Turnkey' },
+      { name: 'Line-array grande para eventos', price: 18000, type: 'Turnkey' },
+      { name: 'Rigging completo', price: 15000, type: 'Turnkey' },
+      { name: 'Escenario modular 8×6 m', price: 5000, type: 'Turnkey' },
+      { name: 'Switching & grabación 4K empresarial', price: 12000, type: 'Turnkey' },
+      { name: 'IMAG + broadcast mix', price: 15000, type: 'Turnkey' },
+      { name: 'Livestream global con redundancia', price: 12000, type: 'Turnkey' },
+      { name: 'Full producción auditorio (~1,000 pax)', price: 60000, type: 'Turnkey' },
+      { name: 'Expo booth AV completo', price: 50000, type: 'Turnkey' },
+      { name: 'Expo booth Packs M / L', price: 5000, type: 'Turnkey' },
+      { name: 'Interpretación simultánea (IR)', price: 5000, type: 'Turnkey' },
+      { name: 'Sistema de micrófonos delegado (20)', price: 4000, type: 'Turnkey' },
+      { name: 'Digital signage (25 displays + CMS)', price: 30000, type: 'Turnkey' },
+      { name: 'LED interactivo con sensores', price: 18000, type: 'Turnkey' },
+      { name: 'Holographic display tower', price: 8000, type: 'Turnkey' },
+      { name: '360° photo/video booth + operador', price: 2500, type: 'Turnkey' }
     ];
 
     const grid = document.getElementById('servicesGrid');
