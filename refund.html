@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Refund Policy — Solution Planet LLC</title>
+  <meta name="description" content="Refund Policy for Solution Planet LLC." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Cormorant+Garamond:wght@600&display=swap" rel="stylesheet">
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Estilos optimizados para rendimiento -->
+  <style>
+    html{scroll-behavior:smooth}
+    
+    /* Solo estilos mínimos para enlaces */
+    a { transition: all 0.2s ease; }
+    a:hover { transform: translateY(-1px); }
+    
+    /* Estilos para botones si los hay */
+    button { transition: all 0.2s ease; }
+    button:hover { transform: translateY(-1px); }
+  </style>
+  
+  <script>
+    tailwind.config = { theme: { extend: { colors: { brand: { DEFAULT: '#00B8D9', dark: '#0096B3' }, carbon: '#0A0A0A' }, fontFamily: { sans: ['Montserrat','ui-sans-serif','system-ui'], display: ['Cormorant Garamond','serif'] }, boxShadow: { soft: '0 10px 30px rgba(0,0,0,.12)' } } } };
+  </script>
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" href="/assets/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+  <link rel="shortcut icon" href="/assets/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="Solution Planet" />
+  <link rel="manifest" href="/assets/site.webmanifest" />
+  <style>html{scroll-behavior:smooth}</style>
+  <!-- Legal disclaimer: not legal advice -->
+</head>
+<body class="bg-neutral-50 text-neutral-800 font-sans">
+  <header class="border-b bg-white/90 backdrop-blur">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-36 flex items-center justify-between">
+      <a href="index.html#top" class="flex items-center gap-3">
+        <img src="assets/logo.png" alt="Solution Planet LLC" class="h-[13.5rem] w-auto">
+      </a>
+      <a href="index.html#contact" class="text-sm text-brand hover:underline">Contact</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="bg-gradient-to-r from-neutral-900 via-neutral-800 to-brand/30 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+      <h1 class="text-4xl lg:text-5xl font-extrabold">Refund Policy</h1>
+      <p class="mt-3 text-neutral-200 max-w-3xl">Clear, fair refund terms for digital products, services, rentals, and equipment. We aim to resolve issues quickly and fairly.</p>
+      <div class="mt-5 inline-flex items-center gap-2 text-sm text-neutral-200/90 bg-white/10 rounded-full px-3 py-1">
+        <span class="inline-block h-2 w-2 rounded-full bg-emerald-400"></span>
+        <span>Last updated: <span id="refund-date"></span></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content -->
+  <main class="py-12 lg:py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-12 gap-8 lg:gap-12">
+      <!-- TOC -->
+      <aside class="lg:col-span-3">
+        <div class="sticky top-24 rounded-2xl bg-white border shadow-sm p-5">
+          <h3 class="font-semibold text-sm mb-3 text-neutral-700">On this page</h3>
+          <nav class="text-sm space-y-2">
+            <a class="block hover:text-brand" href="#overview">Overview</a>
+            <a class="block hover:text-brand" href="#digital">Digital Goods</a>
+            <a class="block hover:text-brand" href="#services">Services</a>
+            <a class="block hover:text-brand" href="#rentals">Rentals</a>
+            <a class="block hover:text-brand" href="#subscriptions">Subscriptions</a>
+            <a class="block hover:text-brand" href="#physical">Physical Products</a>
+            <a class="block hover:text-brand" href="#chargebacks">Chargebacks</a>
+            <a class="block hover:text-brand" href="#process">Refund Process</a>
+            <a class="block hover:text-brand" href="#timing">Refund Timing</a>
+            <a class="block hover:text-brand" href="#fraud">Fraud & Abuse</a>
+            <a class="block hover:text-brand" href="#contact">Contact</a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Article -->
+      <article class="lg:col-span-9 space-y-6">
+        <section id="intro" class="rounded-2xl bg-white border shadow-sm p-8">
+          <p class="mb-3">This Refund Policy explains when and how refunds are available for products and services provided by <strong>Solution Planet LLC</strong>. Please read this policy carefully before making a purchase.</p>
+          <p>By making a purchase, you agree to this Refund Policy. If you have questions, please contact us before purchasing.</p>
+        </section>
+
+        <section id="overview" class="rounded-2xl bg-white border shadow-sm p-8">
+          <h2 class="text-2xl font-bold mb-3">Overview</h2>
+          <p class="mb-3">Refund eligibility depends on the type of product or service purchased:</p>
+          <ul class="list-disc pl-5 space-y-1 mb-4">
+            <li><strong>Digital goods</strong> (software keys, downloads, licenses): Generally non-refundable after delivery/activation</li>
+            <li><strong>Services</strong> (consulting, support, turnkey production): Refundable if work has not started, subject to terms</li>
+            <li><strong>Rentals</strong>: Subject to cancellation fees and terms</li>
+            <li><strong>Subscriptions</strong>: Cancellable with prorated refunds for unused periods (if applicable)</li>
+            <li><strong>Physical products</strong>: Returnable within specified time windows if unused and in original packaging</li>
+          </ul>
+          <p class="mt-4 p-4 bg-brand/10 border border-brand/30 rounded-lg"><strong>Important:</strong> All refund requests must be submitted within the applicable time windows and meet eligibility criteria. Contact us promptly if you need a refund.</p>
+        </section>
+
+        <section id="digital" class="rounded-2xl bg-white border shadow-sm p-8">
+          <h2 class="text-2xl font-bold mb-3">Digital Goods (Keys, Downloads, Licenses)</h2>
+          
+          <h3 class="font-semibold text-lg mb-2 mt-4">General Rule: All Sales Final</h3>
+          <p class="mb-3">Digital products are generally <strong>non-refundable</strong> after delivery or activation because:</p>
+          <ul class="list-disc pl-5 space-y-1 mb-4">
+            <li>Digital products cannot be "returned" once delivered</li>
+            <li>License keys cannot be deactivated or reused</li>
+            <li>Downloads are immediately accessible</li>
+          </ul>
+
+          <h3 class="font-semibold text-lg mb-2 mt-4">Exceptions (Refundable Within 14 Days)</h3>
+          <p class="mb-3">Refunds may be available in the following limited circumstances, if requested within 14 days of purchase:</p>
+          <ul class="list-disc pl-5 space-y-1 mb-4">
+            <li><strong>Non-delivery:</strong> Product was not delivered within 48 hours of purchase (after payment confirmation)</li>
+            <li><strong>Wrong product:</strong> You received a different product than ordered (must report within 24 hours)</li>
+            <li><strong>Defective key:</strong> License key is invalid, already used, or region-locked in a way not disclosed</li>
+            <li><strong>Technical incompatibility:</strong> Product is fundamentally incompatible with your system (must provide proof of system specs)</li>
+            <li><strong>Duplicate purchase:</strong> Accidental duplicate order (must report within 24 hours, before activation)</li>
+          </ul>
+
+          <h3 class="font-semibold text-lg mb-2 mt-4">Non-Refundable Situations</h3>
+          <p class="mb-3">Refunds are <strong>not available</strong> for:</p>
+          <ul class="list-disc pl-5 space-y-1">
+            <li>Change of mind or buyer's remorse</li>
+            <li>Product already activated or used</li>
+            <li>Failure to check system requirements before purchase</li>
+            <li>Product works but doesn't meet expectations</li>
+            <li>Price changes after purchase</li>
+            <li>Bundled products where one item is used</li>
+          </ul>
+        </section>
+
+        <section id="services" class="rounded-2xl bg-white border shadow-sm p-8">
+          <h2 class="text-2xl font-bold mb-3">Services (Consulting, Support, Turnkey Production)</h2>
+          
+          <h3 class="font-semibold text-lg mb-2 mt-4">Work Not Started</h3>
+          <p class="mb-3">If you cancel before work begins:</p>
+          <ul class="list-disc pl-5 space-y-1 mb-4">
+            <li><strong>Full refund</strong> available if cancelled within 48 hours of order confirmation</li>
+            <li><strong>Partial refund</strong> (minus non-refundable costs) if cancelled more than 48 hours after confirmation but before work starts</li>
+            <li>Non-refundable costs may include: site surveys already conducted, custom designs completed, equipment ordered specifically for your project, or administrative fees</li>
+          </ul>
+
+          <h3 class="font-semibold text-lg mb-2 mt-4">Work Partially Completed</h3>
+          <p class="mb-3">If work has started but is not completed:</p>
+          <ul class="list-disc pl-5 space-y-1 mb-4">
+            <li>Refund amount = Total paid minus (a) work completed to date, (b) non-refundable costs, and (c) cancellation fees</li>
+            <li>Work completed is valued at our standard hourly or project rates</li>
+            <li>Cancellation fees: 10% of remaining work value (minimum $100)</li>
+            <li>You may receive deliverables completed to date, but refund will reflect their value</li>
+          </ul>
+
+          <h3 class="font-semibold text-lg mb-2 mt-4">Work Completed</h3>
+          <p class="mb-3">If services are fully delivered:</p>
+          <ul class="list-disc pl-5 space-y-1 mb-4">
+            <li>Generally <strong>non-refundable</strong> unless there is a material breach of contract</li>
+            <li>Refunds may be available if services were not performed as agreed or were fundamentally defective</li>
+            <li>You must report issues within 7 days of service completion</li>
+            <li>We will investigate and may offer partial refund, re-performance, or credit</li>
+          </ul>
+
+          <h3 class="font-semibold text-lg mb-2 mt-4">Time Windows</h3>
+          <ul class="list-disc pl-5 space-y-1">
+            <li><strong>Before work starts:</strong> Request within 48 hours for full refund; up to 7 days for partial refund</li>
+            <li><strong>After work starts:</strong> Request as soon as possible; refund amount depends on work completed</li>
+            <li><strong>After completion:</strong> Request within 7 days of service delivery</li>
+          </ul>
+        </section>
+
+        <section id="rentals" class="rounded-2xl bg-white border shadow-sm p-8">
+          <h2 class="text-2xl font-bold mb-3">Equipment Rentals</h2>
+          
+          <h3 class="font-semibold text-lg mb-2 mt-4">Cancellation Before Delivery</h3>
+          <p class="mb-3">If you cancel a rental before equipment is delivered:</p>
+          <ul class="list-disc pl-5 space-y-1 mb-4">
+            <li><strong>More than 7 days before event:</strong> Full refund minus 5% processing fee</li>
+            <li><strong>4-7 days before event:</strong> 50% refund (covers committed logistics and scheduling)</li>
+            <li><strong>Less than 4 days before event:</strong> No refund (equipment and personnel are committed)</li>
+          </ul>
+
+          <h3 class="font-semibold text-lg mb-2 mt-4">Early Return</h3>
+          <p class="mb-3">If you return equipment early:</p>
+          <ul class="list-disc pl-5 space-y-1 mb-4">
+            <li>No refund for unused rental days</li>
+            <li>Rental period is fixed at time of order</li>
+            <li>Early return does not reduce charges</li>
+          </ul>
+
+          <h3 class="font-semibold text-lg mb-2 mt-4">Equipment Issues</h3>
+          <p class="mb-3">If equipment is defective or not as described:</p>
+          <ul class="list-disc pl-5 space-y-1">
+            <li>Report immediately upon delivery or discovery</li>
+            <li>We will replace equipment or provide full/partial refund</li>
+            <li>Refund amount depends on whether replacement is possible and impact on your event</li>
+          </ul>
+        </section>
+
+        <section id="subscriptions" class="rounded-2xl bg-white border shadow-sm p-8">
+          <h2 class="text-2xl font-bold mb-3">Subscriptions (If Applicable)</h2>
+          <p class="mb-3">If we offer subscription services:</p>
+          
+          <h3 class="font-semibold text-lg mb-2 mt-4">Cancellation</h3>
+          <ul class="list-disc pl-5 space-y-1 mb-4">
+            <li>You may cancel at any time through your account or by contacting us</li>
+            <li>Cancellation takes effect at the end of the current billing cycle</li>
+            <li>You retain access until the end of the paid period</li>
+          </ul>
+
+          <h3 class="font-semibold text-lg mb-2 mt-4">Refunds</h3>
+          <ul class="list-disc pl-5 space-y-1">
+            <li><strong>Within 14 days of initial subscription:</strong> Full refund for unused portion</li>
+            <li><strong>After 14 days:</strong> No refunds for current or past billing periods</li>
+            <li><strong>Annual subscriptions:</strong> Prorated refund available if cancelled within 30 days</li>
+          </ul>
+        </section>
+
+        <section id="physical" class="rounded-2xl bg-white border shadow-sm p-8">
+          <h2 class="text-2xl font-bold mb-3">Physical Products (Future-Proof Section)</h2>
+          <p class="mb-3">If we offer physical products now or in the future:</p>
+          
+          <h3 class="font-semibold text-lg mb-2 mt-4">Return Eligibility</h3>
+          <p class="mb-3">Physical products may be returned within <strong>30 days</strong> of delivery if:</p>
+          <ul class="list-disc pl-5 space-y-1 mb-4">
+            <li>Product is unused and in original condition</li>
+            <li>Original packaging is intact and included</li>
+            <li>All accessories, manuals, and components are included</li>
+            <li>Product is not a custom or personalized item</li>
+            <li>Return is not for a product excluded from returns (e.g., consumables, software with opened seal)</li>
+          </ul>
+
+          <h3 class="font-semibold text-lg mb-2 mt-4">Return Process</h3>
+          <ul class="list-disc pl-5 space-y-1 mb-4">
+            <li>Contact us to obtain a Return Merchandise Authorization (RMA) number</li>
+            <li>Include RMA number with returned item</li>
+            <li>Ship to address provided (customer responsible for return shipping unless product is defective)</li>
+            <li>We will inspect upon receipt and process refund within 10 business days</li>
+          </ul>
+
+          <h3 class="font-semibold text-lg mb-2 mt-4">Refund Amount</h3>
+          <ul class="list-disc pl-5 space-y-1">
+            <li>Full refund of product price (excluding original shipping costs)</li>
+            <li>If product is defective or wrong item: full refund including shipping</li>
+            <li>If product is damaged due to customer misuse: no refund</li>
+          </ul>
+        </section>
+
+        <section id="chargebacks" class="rounded-2xl bg-white border shadow-sm p-8">
+          <h2 class="text-2xl font-bold mb-3">Chargebacks & Payment Disputes</h2>
+          <p class="mb-3"><strong>Important:</strong> Initiating a chargeback or payment dispute should be a last resort. Please contact us first to resolve issues.</p>
+          
+          <h3 class="font-semibold text-lg mb-2 mt-4">Impact of Chargebacks</h3>
+          <p class="mb-3">If you initiate a chargeback:</p>
+          <ul class="list-disc pl-5 space-y-1 mb-4">
+            <li>Your account may be immediately suspended or terminated</li>
+            <li>We may dispute the chargeback with evidence of service delivery</li>
+            <li>You may be liable for chargeback fees ($25-$100) if the chargeback is found invalid</li>
+            <li>Future orders may be restricted or require prepayment</li>
+          </ul>
+
+          <h3 class="font-semibold text-lg mb-2 mt-4">Resolution Process</h3>
+          <p class="mb-3">Before initiating a chargeback:</p>
+          <ul class="list-disc pl-5 space-y-1">
+            <li>Contact us at <a href="mailto:info@solutionplanetusa.com" class="text-brand hover:underline">info@solutionplanetusa.com</a> with your order number and issue</li>
+            <li>Allow us 5-7 business days to respond and attempt resolution</li>
+            <li>We will work with you to find a fair solution</li>
+            <li>Chargebacks should only be used if we fail to respond or resolve legitimate issues</li>
+          </ul>
+        </section>
+
+        <section id="process" class="rounded-2xl bg-white border shadow-sm p-8">
+          <h2 class="text-2xl font-bold mb-3">How to Request a Refund</h2>
+          
+          <h3 class="font-semibold text-lg mb-2 mt-4">Step 1: Contact Us</h3>
+          <p class="mb-3">Email us at <a href="mailto:info@solutionplanetusa.com" class="text-brand hover:underline font-semibold">info@solutionplanetusa.com</a> with:</p>
+          <ul class="list-disc pl-5 space-y-1 mb-4">
+            <li>Subject line: "Refund Request - [Order Number]"</li>
+            <li>Your order number or transaction ID</li>
+            <li>Reason for refund request</li>
+            <li>Supporting documentation (screenshots, error messages, etc.)</li>
+            <li>Your contact information</li>
+          </ul>
+
+          <h3 class="font-semibold text-lg mb-2 mt-4">Step 2: Review</h3>
+          <p class="mb-3">We will:</p>
+          <ul class="list-disc pl-5 space-y-1 mb-4">
+            <li>Review your request within 2-3 business days</li>
+            <li>Verify eligibility based on this policy</li>
+            <li>Request additional information if needed</li>
+            <li>Notify you of our decision</li>
+          </ul>
+
+          <h3 class="font-semibold text-lg mb-2 mt-4">Step 3: Processing</h3>
+          <p class="mb-3">If approved:</p>
+          <ul class="list-disc pl-5 space-y-1">
+            <li>Refund will be processed to the original payment method</li>
+            <li>Processing time: 5-10 business days (may vary by payment processor)</li>
+            <li>You will receive email confirmation when refund is processed</li>
+            <li>For digital products: access will be revoked upon refund</li>
+          </ul>
+        </section>
+
+        <section id="timing" class="rounded-2xl bg-white border shadow-sm p-8">
+          <h2 class="text-2xl font-bold mb-3">Refund Timing</h2>
+          <p class="mb-3">Refund processing times:</p>
+          <ul class="list-disc pl-5 space-y-1 mb-4">
+            <li><strong>Review period:</strong> 2-3 business days after request submission</li>
+            <li><strong>Processing time:</strong> 5-10 business days after approval</li>
+            <li><strong>Credit card refunds:</strong> 5-10 business days (appears on statement within 1-2 billing cycles)</li>
+            <li><strong>Bank transfers:</strong> 7-14 business days</li>
+            <li><strong>PayPal:</strong> 3-5 business days</li>
+          </ul>
+          <p class="mt-4">Refunds are processed to the original payment method. If that method is no longer available, contact us to arrange an alternative.</p>
+        </section>
+
+        <section id="fraud" class="rounded-2xl bg-white border shadow-sm p-8">
+          <h2 class="text-2xl font-bold mb-3">Fraud & Abuse Prevention</h2>
+          <p class="mb-3">We reserve the right to deny refunds in cases of:</p>
+          <ul class="list-disc pl-5 space-y-1 mb-4">
+            <li>Fraudulent or suspicious activity</li>
+            <li>Abuse of refund policy (repeated refund requests, pattern of returns)</li>
+            <li>Violation of Terms of Service</li>
+            <li>Use of stolen payment methods</li>
+            <li>False or misleading refund claims</li>
+          </ul>
+          <p class="mt-4">We may investigate refund requests and may require additional verification. Accounts associated with fraudulent refund requests may be terminated and reported to authorities.</p>
+        </section>
+
+        <section id="contact" class="rounded-2xl bg-white border shadow-sm p-8">
+          <h2 class="text-2xl font-bold mb-3">Contact Us</h2>
+          <p class="mb-3">For refund requests or questions about this policy:</p>
+          <p class="mb-2"><strong>Solution Planet LLC</strong></p>
+          <p class="mb-2">11801 Pierce St, Ste 200</p>
+          <p class="mb-2">Riverside, CA 92505</p>
+          <p class="mb-2">United States</p>
+          <p class="mb-4">Email: <a class="text-brand hover:underline font-semibold" href="mailto:info@solutionplanetusa.com">info@solutionplanetusa.com</a></p>
+          <p class="text-sm text-neutral-600">Please include "Refund Request" in the subject line and your order number in the message.</p>
+        </section>
+
+        <section class="rounded-2xl bg-neutral-100 border border-neutral-300 p-6">
+          <p class="text-sm text-neutral-700"><strong>Related Policies:</strong> Please also review our <a href="terms.html" class="text-brand hover:underline">Terms of Service</a> and <a href="privacy.html" class="text-brand hover:underline">Privacy Policy</a>.</p>
+        </section>
+      </article>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-neutral-950 text-neutral-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <!-- Company Info -->
+        <div class="col-span-1">
+          <img src="assets/logo-white.png" alt="Solution Planet" class="h-[15rem] w-auto mb-6">
+          <p class="text-neutral-300 text-lg leading-relaxed max-w-md">
+            Professional AV solutions for large-scale events. From LED walls to complete production, we bring your vision to life.
+          </p>
+        </div>
+        <!-- Quick Links -->
+        <div class="col-span-1">
+          <h3 class="font-semibold text-white mb-3">Quick Links</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="index.html" class="hover:text-white">Home</a></li>
+            <li><a href="services.html" class="hover:text-white">Services</a></li>
+          </ul>
+        </div>
+        <!-- Core Services -->
+        <div class="col-span-1">
+          <h3 class="font-semibold text-white mb-3">Core Services</h3>
+          <ul class="space-y-2 text-sm">
+            <li>LED Walls & Projection</li>
+            <li>Pro Audio & Lighting</li>
+            <li>Rigging & Staging</li>
+            <li>Livestream & Recording</li>
+          </ul>
+        </div>
+        <!-- Contact -->
+        <div class="col-span-1">
+          <h3 class="font-semibold text-white mb-3">Contact</h3>
+          <ul class="space-y-2 text-sm">
+            <li>Email: <a href="mailto:info@solutionplanetusa.com" class="hover:text-white">info@solutionplanetusa.com</a></li>
+            <li>WhatsApp: <a href="#" onclick="openWhatsApp();return false;" class="hover:text-white">+1 323 499 0834</a></li>
+            <li>Address: 11801 Pierce St, Ste 200, Riverside, CA 92505</li>
+            <li>Instagram: <a href="https://instagram.com/solutionplanet_" target="_blank" rel="noopener" class="hover:text-white">@solutionplanet_</a></li>
+            <li>Hours: Mon–Sat 9:00–18:00</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-white/10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <p class="text-sm">© <span id="year"></span> Solution Planet LLC. All rights reserved.</p>
+        <div class="flex gap-5 text-sm">
+          <a href="privacy.html" class="hover:text-white">Privacy Policy</a>
+          <a href="terms.html" class="hover:text-white">Terms of Service</a>
+          <a href="refund.html" class="hover:text-white">Refund Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const WA_NUMBER = '13234990834';
+    function openWhatsApp(){ const msg = "Hello! I'd like to discuss refunds."; window.open('https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(msg), '_blank'); }
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('refund-date').textContent = new Date().toISOString().slice(0,10);
+  </script>
+  <!-- Floating WhatsApp Button -->
+  <div id="whatsapp-button" class="fixed bottom-6 right-6 z-50">
+    <a href="#" 
+       onclick="openWhatsApp(); return false;" 
+       class="group relative inline-flex items-center justify-center w-16 h-16 rounded-full bg-brand text-white shadow-2xl hover:bg-brand-dark transition-all duration-300 ease-out transform hover:scale-110 hover:rotate-2"
+       aria-label="Chat on WhatsApp">
+      <img src="assets/whatsapp.png" alt="WhatsApp" class="w-8 h-8">
+      <div class="absolute inset-0 rounded-full bg-brand/30 animate-ping"></div>
+      <div class="absolute -top-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white shadow-lg">
+        <div class="w-2 h-2 bg-white rounded-full m-0.5"></div>
+      </div>
+      <div class="absolute bottom-full right-0 mb-3 px-3 py-2 bg-gray-900 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none whitespace-nowrap transform translate-y-1 group-hover:translate-y-0">
+        <span class="font-medium">Chat on WhatsApp</span>
+        <div class="absolute top-full right-4 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900"></div>
+      </div>
+    </a>
+  </div>
+  <!-- Cookie Consent Banner -->
+  <script src="assets/cookie-consent.js"></script>
+</body>
+</html>
+
